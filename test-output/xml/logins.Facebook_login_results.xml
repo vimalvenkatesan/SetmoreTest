@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Facebook"
+           tests="1"
+           failures="0"
+           errors="0"
+           skipped="0"
+           time="26.728">
+  <properties />
+  
+  
+            <testcase name="Facebook_Loign" time="26.728" classname="logins.Facebook_login" />
+      
+</testsuite>

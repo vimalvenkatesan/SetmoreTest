@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="20734" started-at="2015-12-29T13:39:21Z" finished-at="2015-12-29T13:39:42Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="20734" started-at="2015-12-29T13:39:21Z" finished-at="2015-12-29T13:39:42Z">
+      <class name="bookingPage.Tests">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:bookingPage.Tests@7c30a502]" name="setUp" is-config="true" duration-ms="12641" started-at="2015-12-29T19:09:21Z" finished-at="2015-12-29T19:09:34Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="booking()[pri:0, instance:bookingPage.Tests@7c30a502]" name="booking" duration-ms="8062" started-at="2015-12-29T19:09:34Z" finished-at="2015-12-29T19:09:42Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- booking -->
+      </class> <!-- bookingPage.Tests -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

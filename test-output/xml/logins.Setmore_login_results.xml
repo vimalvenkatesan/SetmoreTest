@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="setmore"
+           tests="1"
+           failures="0"
+           errors="0"
+           skipped="0"
+           time="13.980">
+  <properties />
+  
+  
+            <testcase name="SetmoreLogin" time="13.980" classname="logins.Setmore_login" />
+      
+</testsuite>

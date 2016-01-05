@@ -1,0 +1,45 @@
+<!-- <?xml version="1.0" encoding="UTF-8"?> -->
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="suite"> 
+<listeners>
+      <listener class-name="org.uncommons.reportng.HTMLReporter"/>
+      <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
+  </listeners>
+	 <test name="Google">
+    <classes>
+       <class name="logins.Google_login" />
+    </classes>
+  </test>
+  <test name="Facebook">
+    <classes>
+       <class name="logins.Facebook_login" />
+    </classes>
+  </test>
+  
+   <test name="setmore">
+    <classes>
+       <class name="logins.Setmore_login" />
+    </classes>
+  </test>  
+  
+  <!--  <test name="CustomerPage">
+    <classes>
+       <class name="customerPage.Customer" />
+    </classes>
+  </test> -->
+ <!--  
+  <test name="Calendar">
+    <classes>
+       <class name="CalendarPage.Singlebooking" />
+    </classes>
+  </test>  -->
+  
+<!--    <test name="Bookingpage">
+    <classes>
+       <class name="bookingPage.Bookaday" />
+    </classes>
+  </test>  -->
+  
+   
+</suite> 
