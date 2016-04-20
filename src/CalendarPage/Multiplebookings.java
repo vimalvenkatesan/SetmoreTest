@@ -11,6 +11,7 @@ import org.testng.Reporter;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import appModule.signout;
@@ -19,8 +20,7 @@ public class Multiplebookings {
 	WebDriver driver;
 	String calslot = "//*[@id='calendarHolder']/div/div/div/div/div/table/tbody/tr[45]/td/table/tbody/tr/td[2]";
 
-	@BeforeMethod
-	@BeforeSuite
+	@BeforeTest
 	public void setUp() {
 		driver = new FirefoxDriver();
 		driver.manage().window().maximize();
@@ -28,7 +28,7 @@ public class Multiplebookings {
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		Reporter.log("Application Lauched successfully | ");
 		driver.findElement(By.id("username")).sendKeys("love12345@setmore.com");
-		driver.findElement(By.id("password")).sendKeys("Setmore");
+		driver.findElement(By.id("password")).sendKeys("setmore");
 		driver.findElement(By.xpath(".//*[@id='Login_Form_id']/div/div[2]/div[1]/ul[1]/li[6]/div[3]/input")).click();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	}
@@ -43,7 +43,7 @@ public class Multiplebookings {
 			if (i != 4) {
 				try {
 					
-					DoubleBookingAppts( i , positionOfSlots );positionOfSlots++; 
+					BookingAppts( i , positionOfSlots );positionOfSlots++; 
 					
 				} catch (InterruptedException e) {
 					e.printStackTrace();
@@ -54,7 +54,7 @@ public class Multiplebookings {
 	}
 
 	@Test
-	public void DoubleBookingAppts( int i , int positionOfSlots ) throws InterruptedException {
+	public void BookingAppts( int i , int positionOfSlots ) throws InterruptedException {
 
 		driver.findElement(
 				By.xpath("//*[@id='calendarHolder']/div/div/div/div/div/table/tbody/tr["+positionOfSlots+"]/td/table/tbody/tr/td[1]"))
@@ -72,10 +72,10 @@ public class Multiplebookings {
 		// click continue
 		driver.findElement(By.xpath(".//*[@id='editApptPopup']/div[7]/a[1]")).click();
 		// Input cusomter name
-		driver.findElement(By.xpath(".//*[@id='editApptPopup']/div[5]/div/input")).sendKeys("Test "+i);
+		driver.findElement(By.xpath(".//*[@id='editApptPopup']/div[5]/div/input")).sendKeys("JackMultiple "+i);
 		// click New customer
 		driver.findElement(By.xpath(".//*[@id='editApptPopup']/div[5]/a")).click();
-		driver.findElement(By.xpath(".//*[@id='apptCust-LoginId']")).sendKeys("test"+i+"@gmail.com");
+		driver.findElement(By.xpath(".//*[@id='apptCust-LoginId']")).sendKeys("jacksrone"+i+"@gmail.com");
 		Thread.sleep(5000);
 		driver.findElement(By.xpath(".//*[@id='dup-appt-save-btn']")).click();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -83,9 +83,7 @@ public class Multiplebookings {
 			Thread.sleep(5000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
-			// handle the exception...
-			// For example consider calling Thread.currentThread().interrupt();
-			// here.
+			
 		}
 	}
 

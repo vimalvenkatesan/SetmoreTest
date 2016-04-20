@@ -20,12 +20,12 @@ import org.testng.annotations.BeforeClass;
 			import appModule.signout;
 			
 			@Listeners(Reporter.class)
-			public class AddCusotmer {
+			public class AddCustomer {
 			
 			
 			
 			public static WebDriver driver=new FirefoxDriver();
-			private static Logger Log = Logger.getLogger(AddCusotmer.class.getName());
+			private static Logger Log = Logger.getLogger(AddCustomer.class.getName());
 			
 		    @BeforeClass
 			public void Login()
@@ -73,7 +73,7 @@ import org.testng.annotations.BeforeClass;
 			for (int i = 1; i <= apptCount; i++) 
 			{	
 				System.out.println(" Customer created No::" + i);
-			if (i != 4000) 
+			if (i != 3) 
 			{
 				try 
 				{
@@ -120,6 +120,7 @@ import org.testng.annotations.BeforeClass;
 			Log.info("Customer created successfully|");
 			
 			}
+			
 		    @AfterTest
 		    public void Logout()
 		    {	

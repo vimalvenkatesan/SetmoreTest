@@ -1,6 +1,9 @@
 package bookingPage;
 
 import org.testng.annotations.Test;
+
+import Utility.Bookingpage;
+
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.AfterTest;
@@ -32,7 +35,7 @@ public class BookingAvailablslots {
 //	sr;
 	
 
-	@BeforeMethod
+	
 	@BeforeSuite
 	 public void setUp(){
 		 driver = new FirefoxDriver();
@@ -53,22 +56,21 @@ public class BookingAvailablslots {
 
 	}
 
-  @SuppressWarnings("deprecation")
-@Test
+  @Test
   public void booking() {
-	
- 
-			// click to choose book services
-			driver.findElement(By.xpath(".//*[@id='gt_sr']")).click();
-			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-			
-			// Click to choose service
-			driver.findElement(By.xpath(".//*[@id='se2c31440052067209']")).click();
-			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	            
+            	// click to choose book services
+//				driver.findElement(By.xpath(Bookingpage.BookTab)).click();
+				driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+				System.out.println("Gonna click services");
+				// Click to choose service    
+				driver.findElement(By.xpath(Bookingpage.Service)).click();
+				driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
 		
 			
 			//Click to choose date
-	        //List<WebElement> date = driver.findElements(By.xpath("//td[@class='datepickerSelected']"));
+	        //List<WebElement> date = driver.findElements(By.xpath(""));
 		      List<WebElement> date = driver.findElements(By.xpath("//div[@class='datepicker']/div/table/tbody/tr/td/table/tbody[2]/tr/td[@class='' or @class='datepickerSaturday' or @class='datepickerSunday']/a/span"));
 			//List<WebElement> date = driver.findElements(By.xpath("//td[@class='']"));
 			String selectedDate		=	date.get(0).getText();
@@ -122,16 +124,16 @@ public class BookingAvailablslots {
   
 
 					
-}
-//@AfterSuite
-//public void end(){
-//	
-//	 driver.quit();
-//  try {
-//		Thread.sleep(3000);
-//	} catch (InterruptedException e) {
-//		// TODO Auto-generated catch block
-//		e.printStackTrace();
-//	}
-//			
-//}}
+
+@AfterSuite
+public void end(){
+	
+	 driver.quit();
+  try {
+		Thread.sleep(3000);
+	} catch (InterruptedException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+			
+}}

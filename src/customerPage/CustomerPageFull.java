@@ -20,12 +20,12 @@ import org.testng.annotations.AfterTest;
 			import appModule.signout;
 			
 			@Listeners(Reporter.class)
-			public class Customer {
+			public class CustomerPageFull {
 			
 			
 			
 			public static WebDriver driver=new FirefoxDriver();
-			private static Logger Log = Logger.getLogger(Customer.class.getName());
+			private static Logger Log = Logger.getLogger(CustomerPageFull.class.getName());
 			
 		    @BeforeClass
 			public void Login()
@@ -39,7 +39,7 @@ import org.testng.annotations.AfterTest;
 			
 			driver.get(Constant.URL);
 			Log.info("Singin started");
-			driver.findElement(By.id("username")).sendKeys("jacksrone@gmail.com");
+			driver.findElement(By.id("username")).sendKeys("homework@setmore.com");
 			driver.findElement(By.id("password")).sendKeys("setmore");
 			driver.findElement(By.xpath("/html/body/form/div/div[2]/div[1]/ul[1]/li[6]/div[3]/input")).click();
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -52,7 +52,7 @@ import org.testng.annotations.AfterTest;
 			 {	
 				
 			driver.findElement(By.xpath(".//*[@id='headerNav']/ul/li[4]/a")).click();
-			Log.info("cusotmer Tab Clicked ");
+			Log.info("cusotmer Header Clicked ");
 			 }
 			
 			@Test(priority=2)
@@ -68,12 +68,12 @@ import org.testng.annotations.AfterTest;
 //						e.printStackTrace();
 //					}
 				
-			int apptCount = 4;
+			int customerCount = 3;
 			
-			for (int i = 1; i <= apptCount; i++) 
+			for (int i = 1; i <= customerCount; i++) 
 			{	
 				System.out.println(" Customer created No::" + i);
-			if (i != 4) 
+//			if (i != 4) 
 			{
 				try 
 				{
@@ -93,6 +93,14 @@ import org.testng.annotations.AfterTest;
 			{
 			Log.info("Cusomter Details Entered");
 			
+			try {
+				Thread.sleep(3000);
+			} catch (InterruptedException e){
+				// TODO Auto-generated catch block
+			e.printStackTrace();
+	          }
+			
+			
 			driver.findElement(By.id("newCustomer")).click();
 			
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -100,6 +108,7 @@ import org.testng.annotations.AfterTest;
 			
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			driver.findElement(By.id("customerNewName")).sendKeys("Johns"+i);
+			
 			
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			driver.findElement(By.id("customerNewEmail")).clear();
@@ -112,6 +121,13 @@ import org.testng.annotations.AfterTest;
 			
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			driver.findElement(By.id("customerNewMobile")).sendKeys("1234567"+i);
+			
+			try {
+				Thread.sleep(3000);
+			} catch (InterruptedException e){
+				// TODO Auto-generated catch block
+			e.printStackTrace();
+	          }
 			
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			driver.findElement(By.id("addnewCustomer")).click();
@@ -127,7 +143,13 @@ import org.testng.annotations.AfterTest;
 		
 			Log.info("Delete a customer");
 			driver.navigate().refresh();
-			 
+			
+			if(driver.findElement(By.xpath(".//*[@id='cancelNewCustomer']")).isDisplayed())
+			
+					{
+						driver.findElement(By.xpath(".//*[@id='cancelNewCustomer']")).click();
+					}
+					
 			//Delete a customer
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			driver.findElement(By.xpath("/html/body/div[3]/div[2]/div[6]/div/div[1]/div[1]/div[4]/ul/li[1]/code")).click();		
@@ -142,9 +164,11 @@ import org.testng.annotations.AfterTest;
 		    @Test(priority=3)
 			public void Deletecustomer_Many()
 			
+			
 	       {
 		    driver.navigate().refresh();
 		    Log.info("Delete many customer");
+		    driver.navigate().refresh();
 			
 			//Delete a many customers
 			java.util.List<org.openqa.selenium.WebElement> checkbox=driver.findElements(By.className("jqTransformCheckbox"));
@@ -169,16 +193,22 @@ import org.testng.annotations.AfterTest;
 			 driver.findElement(By.xpath(".//*[@id='deleteAllCustomer']")).click();
 			 driver.findElement(By.xpath(".//*[@id='deleteSelectedCustomer']")).click();							
 			 System.out.println(" deleteAllCustomer Successfully");
-			 driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS); 
-			     }
-			 
-			    
+			
+			 try
+			 {
+					Thread.sleep(3000);
+			 } 
+			 catch (InterruptedException e) 
+			 {
+				e.printStackTrace();
+			 }
+	       }
 		    @Test(priority=4)
 			 public void mergecustomers() 
 		     {
 		     
 		     Log.info("mergecustomers");
-		     driver.navigate().refresh();
+//		     driver.navigate().refresh();
 			 
 			//mergecustomerscustomers
 			 java.util.List<org.openqa.selenium.WebElement> checkbox=driver.findElements(By.className("jqTransformCheckbox"));
@@ -205,19 +235,17 @@ import org.testng.annotations.AfterTest;
 			driver.findElement(By.xpath(".//*[@id='alertContent']")).click();						
 			driver.findElement(By.xpath(".//*[@id='mergeCustomer_Okay']")).click();					
 			System.out.println("Customers Merged successfully");
-			//driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-			
+		
 				}
 			    
 			  
 		    @Test(priority=5)
-		    public void ImportCustomer(){
-			    
-			 Log.info("Import Cusotmer ");
-			 driver.navigate().refresh();
+		    public void Importcusotmer()
+		    {
+		    Log.info("Import Cusotmer ");
 			 
 			 String handle= driver.getWindowHandle();
-		     System.out.println(handle);
+		        System.out.println(handle);
 		        
 			 driver.findElement(By.xpath("//div[@id='sortLabel']")).click();
 			 try {
@@ -226,12 +254,12 @@ import org.testng.annotations.AfterTest;
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-               //WebDriverWait wait = new WebDriverWait(driver, 5); 
-               //wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[3]/div[2]/div[6]/div/div[1]/div[1]/div[3]/div[2]/ul/li[3]")));  // until this submenu is found
+//			    WebDriverWait wait = new WebDriverWait(driver, 5); 
+//				wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[3]/div[2]/div[6]/div/div[1]/div[1]/div[3]/div[2]/ul/li[3]")));  // until this submenu is found
 
 				//identify menu option from the resulting menu display and click
-				WebElement Importmenu = driver.findElement(By.xpath("/html/body/div[3]/div[2]/div[6]/div/div[1]/div[1]/div[3]/div[2]/ul/li[3]"));
-				Importmenu.click();
+				WebElement menuOption = driver.findElement(By.xpath("/html/body/div[3]/div[2]/div[6]/div/div[1]/div[1]/div[3]/div[2]/ul/li[3]"));
+				menuOption.click();
 		
 			    WebElement Googleimport = driver.findElement(By.id("importGoogleContacts"));
 			    Googleimport.click();
@@ -272,6 +300,7 @@ import org.testng.annotations.AfterTest;
 					e.printStackTrace();
 				}
 			    
+			 
 				WebElement Allowaccess = driver.findElement(By.xpath("/html/body/div[2]/div/div[2]/div/div/form/button[1]"));
 				Allowaccess.click();
 			   
@@ -281,17 +310,33 @@ import org.testng.annotations.AfterTest;
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				driver.switchTo().window(handle);     
-			   	    
+				driver.switchTo().window(handle);  
+				driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);	
+				
+				System.out.println("check1");
+			    driver.findElement(By.xpath(".//*[@id='import-window']")).click();
+			    driver.findElement(By.xpath(".//*[@id='AddCustomerInFile']")).click();
+			    driver.findElement(By.xpath(".//*[@id='alertbox']")).click();
+			    driver.findElement(By.xpath(".//*[@id='alertOk']")).click();
+			    
+			    try {
+					Thread.sleep(3000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			
+			    //driver.switchTo().defaultContent();
+			    
 			    //driver.switchTo().window(driver.getWindowHandles().toArray()[0].toString());
-			    WebElement closebutton = driver.findElement(By.xpath(".//*[@id='import-window']/div[1]"));
-			    closebutton.click();
+//			    WebElement closebutton = driver.findElement(By.xpath(".//*[@id='import-window']/div[1]"));
+//			    closebutton.click();
 		 }
-		 
+
 		    @Test(priority=6)
 		    public void ExportCustomer(){
 			    
-				 Log.info("Export Cusotmer ");
+				 Log.info("Start Export Cusotmer ");
 				 driver.navigate().refresh();
 			        
 				 driver.findElement(By.xpath("//div[@id='sortLabel']")).click();
@@ -313,8 +358,148 @@ import org.testng.annotations.AfterTest;
 					driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 					
 						}
-		    
-		    
+		   
+			@Test(priority=7)
+			 public void ConnectMailChimp() throws InterruptedException 
+		     {
+		     
+		     Log.info("start ConnectToMailChimp");
+		     driver.navigate().refresh();		 
+
+			 String firstwindow= driver.getWindowHandle();
+		     System.out.println(firstwindow);
+		     
+			 java.util.List<org.openqa.selenium.WebElement> checkbox=driver.findElements(By.className("jqTransformCheckbox"));
+			 driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+				       
+				int limit = 2;
+				for (int i = 0; i < limit; i++) {
+					checkbox.get(i).click();
+					
+			 System.out.println(" Cutomer" + i + " ToExport_in_mailchimp");
+			}
+				
+				 try {
+						Thread.sleep(3000);
+					} catch (InterruptedException e){
+						// TODO Auto-generated catch block
+					e.printStackTrace();
+				}			
+			 
+		    driver.findElement(By.id("exportToMailChimp")).click();
+			driver.findElement(By.id("mailchimp-connect")).click();
+			
+			 java.util.Set<String> handles = driver.getWindowHandles();
+			    System.out.println(handles); 
+			    
+			    for (String handle1 : driver.getWindowHandles())
+			    {
+
+		        System.out.println(handle1);
+	        	driver.switchTo().window(handle1);
+			    }
+	        	 Thread.sleep(3000);
+	        	 
+//	        	 driver.findElement(By.xpath(".//*[@id='content']")).click();
+			    
+			    WebDriverWait wait1 = new WebDriverWait(driver, 5); 
+	     		wait1.until(ExpectedConditions.presenceOfElementLocated(By.xpath(".//*[@id='username']")));
+	     		
+	     		WebElement username = driver.findElement(By.xpath(".//*[@id='username']"));
+	     		username.click();
+			
+	     		Log.info("Login to Mailchimp");
+	     		driver.findElement(By.xpath(".//*[@id='username']")).clear();
+			    driver.findElement(By.xpath(".//*[@id='username']")).sendKeys("setmore");
+			   
+			    driver.findElement(By.xpath(".//*[@id='password']")).clear();
+			    driver.findElement(By.xpath(".//*[@id='password']")).sendKeys("JohnCena^7");
+			    driver.findElement(By.xpath(".//*[@id='login-form']/fieldset/div[3]/input")).click();
+			    driver.switchTo().window(firstwindow);
+			    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);	
+			    		   		    
+//				  if(driver.findElement(By.xpath(".//*[@id='recaptcha-anchor']/div[5]")).isDisplayed())			
+//				  {			  
+//					driver.findElement(By.xpath(".//*[@id='recaptcha-anchor']/div[5]")).click();
+//				  }
+//				  
+////				  driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+//
+//				  if(driver.findElement(By.id(".//*[@id='login-form']/fieldset/div[4]/input")).isDisplayed())	
+//				  {					  
+//						driver.findElement(By.id(".//*[@id='login-form']/fieldset/div[4]/input")).click();
+//				  }
+				  
+				  try {
+						Thread.sleep(3000);
+					} catch (InterruptedException e){
+						// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				  driver.findElement(By.xpath(".//*[@id='customerContent']/div[4]/div")).click();
+				  
+				  driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+				
+				  if(driver.findElement(By.xpath("/html/body/div[3]/div[2]/div[6]/div/div[1]/div[4]/div/div/ul/li[2]")).isDisplayed())
+				  {
+						driver.findElement(By.xpath("/html/body/div[3]/div[2]/div[6]/div/div[1]/div[4]/div/div/ul/li[2]")).click();
+				  }
+				  
+				  
+				  
+				  driver.findElement(By.xpath(".//*[@id='matchfield-FirstName']/label")).click();
+				  driver.findElement(By.xpath(".//*[@id='matchfield-FirstName']/div[1]")).click();
+				  driver.findElement(By.xpath("/html/body/div[3]/div[2]/div[6]/div/div[1]/div[4]/div/div/ul/li[1]/div[1]/ul/li[1]/ul/li[1]")).click();
+				  driver.findElement(By.xpath(".//*[@id='matchfield-LastName']/label")).click();
+				  driver.findElement(By.xpath(".//*[@id='matchfield-LastName']/div[1]")).click();
+				  driver.findElement(By.xpath(".//*[@id='matchfield-LastName']/div[1]/ul/li[1]/ul/li[2]")).click();
+				  
+				  driver.findElement(By.xpath(".//*[@id='renderConfirmView']")).click();
+				  
+				  driver.findElement(By.xpath(".//*[@id='addCutomerToMailChimp']")).click();					  
+				  try {
+						Thread.sleep(3000);
+					} catch (InterruptedException e){
+						// TODO Auto-generated catch block
+					e.printStackTrace();
+			          }
+		         }
+			
+			
+			@Test(priority=8)
+			public void BookCustomer()
+			 { 
+			 Log.info("Book customer");
+			 driver.navigate().refresh();
+			 WebDriverWait wait = new WebDriverWait(driver, 5); 
+			 wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(".//*[@id='createAppt']")));  
+			 
+			WebElement Bookappt = driver.findElement(By.xpath(" .//*[@id='createAppt']"));
+			Bookappt.click();
+			
+			//click service scroll        
+			 driver.findElement(By.xpath("/html/body/div[3]/div[2]/div[6]/div[2]/div[3]/ul/li[2]/div[1]/a")).click();
+			//Select service 
+			 driver.findElement(By.xpath("/html/body/div[3]/div[2]/div[6]/div[2]/div[3]/ul/li[2]/div[1]/ul/li[2]")).click();
+			try {
+				Thread.sleep(5000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			  //click continue
+			 driver.findElement(By.xpath(".//*[@id='dup-appt-save-btn']")).click();
+		 
+			 Log.info("Booked Appointment");
+			 
+			 try {
+					Thread.sleep(5000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			 }
 				    @AfterTest
 				    public void Logout()
 				    {	

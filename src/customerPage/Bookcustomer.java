@@ -20,22 +20,18 @@ import Utility.Reporter;
 import appModule.signout;
 		
 		@Listeners(Reporter.class)
-		public class Book4mCustomerPage {
+		public class Bookcustomer {
 		
 		
 		
 		public static WebDriver driver=new FirefoxDriver();
-		private static Logger Log = Logger.getLogger(Book4mCustomerPage.class.getName());
+		private static Logger Log = Logger.getLogger(Bookcustomer.class.getName());
 		
 		@BeforeClass
 		public void Login()
 		{
 			
 		Log.info("Web application launched");
-		// driver.get("https://www.setmore.com/");
-		//driver.get("https://my.setmore.com/");
-		//driver.get("https://staging.setmore.com");
-		//driver.get(Constant.Staging_URL);
 		
 		driver.get(Constant.URL);
 		Log.info("Singin started");
@@ -43,7 +39,7 @@ import appModule.signout;
 		driver.findElement(By.id("password")).sendKeys("setmore");
 		driver.findElement(By.xpath("/html/body/form/div/div[2]/div[1]/ul[1]/li[6]/div[3]/input")).click();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		//			driver.manage().window().maximize();
+		driver.manage().window().maximize();
 			
 		}
 		
@@ -52,13 +48,13 @@ import appModule.signout;
 		 {	
 			
 		driver.findElement(By.xpath(".//*[@id='headerNav']/ul/li[4]/a")).click();
-		Log.info("cusotmer Tab Clicked ");
+		Log.info("customer Tab Clicked ");
 		 }
 		
 		@Test(priority=2)
 		public void BookCustomer()
 		 { 
-		 Log.info("Book cusotmer");
+		 Log.info("Book customer");
 		 
 		 WebDriverWait wait = new WebDriverWait(driver, 5); 
 		 wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(".//*[@id='createAppt']")));  
@@ -68,7 +64,7 @@ import appModule.signout;
 		
 		//click service scroll        
 		 driver.findElement(By.xpath("/html/body/div[3]/div[2]/div[6]/div[2]/div[3]/ul/li[2]/div[1]/a")).click();
-		 //Select service 
+		//Select service 
 		 driver.findElement(By.xpath("/html/body/div[3]/div[2]/div[6]/div[2]/div[3]/ul/li[2]/div[1]/ul/li[2]")).click();
 		try {
 			Thread.sleep(5000);
@@ -79,13 +75,12 @@ import appModule.signout;
 		
 		  //click continue
 		 driver.findElement(By.xpath(".//*[@id='dup-appt-save-btn']")).click();
-		
 		 try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+				Thread.sleep(5000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		 
 		 } 
 		

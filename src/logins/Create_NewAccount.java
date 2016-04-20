@@ -27,7 +27,7 @@ public class Create_NewAccount {
 	
     {
     	Log.info("Web application launched");
-    	driver.get(Constant.StagingURL);	
+    	driver.get(Constant.URL);	
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		driver.manage().window().maximize();	
 	}
@@ -38,8 +38,8 @@ public class Create_NewAccount {
 	{
     	Log.info("createaccount");
 		driver.findElement(By.xpath(".//*[@id='login_header']/div/a/span")).click();
-		driver.findElement(By.xpath(".//*[@id='name-signup']")).sendKeys("MadeLivesms");
-		driver.findElement(By.xpath(".//*[@id='email-signup']")).sendKeys("MadedLivedaledrtfixx@setmore.com");
+		driver.findElement(By.xpath(".//*[@id='name-signup']")).sendKeys("Create");
+		driver.findElement(By.xpath(".//*[@id='email-signup']")).sendKeys("Create007@setmore.com");
 		driver.findElement(By.xpath(".//*[@id='password-signup']")).sendKeys("setmore");
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		driver.findElement(By.xpath(".//*[@id='signup-popup-form']/a")).click();
@@ -109,6 +109,7 @@ public class Create_NewAccount {
     	Log.info("calendarlink");
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);	
 		driver.findElement(By.xpath(".//*[@id='setupContentHolder']/div/div[2]/div[1]")).click();	
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	}
     
     @AfterTest

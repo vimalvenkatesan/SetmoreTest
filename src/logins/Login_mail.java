@@ -5,7 +5,6 @@ import org.testng.annotations.Test;
 import org.testng.annotations.BeforeClass;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
-
 import javax.activation.DataHandler;
 import javax.activation.DataSource;
 import javax.activation.FileDataSource;
@@ -19,7 +18,6 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
-
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

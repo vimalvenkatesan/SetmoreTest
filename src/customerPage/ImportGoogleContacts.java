@@ -27,7 +27,7 @@ import Utility.Reporter;
 public class ImportGoogleContacts {
 	  
 	    public static WebDriver driver=new FirefoxDriver();
-     	private static Logger Log = Logger.getLogger(Customer.class.getName());
+     	private static Logger Log = Logger.getLogger(CustomerPageFull.class.getName());
 	
 	
 	  @BeforeClass
@@ -116,6 +116,7 @@ public class ImportGoogleContacts {
 				e.printStackTrace();
 			}
 		    
+		 
 			WebElement Allowaccess = driver.findElement(By.xpath("/html/body/div[2]/div/div[2]/div/div/form/button[1]"));
 			Allowaccess.click();
 		   
@@ -125,12 +126,27 @@ public class ImportGoogleContacts {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			driver.switchTo().window(handle);     
+			driver.switchTo().window(handle);  
+			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);	
+			
+			System.out.println("check1");
+		    driver.findElement(By.xpath(".//*[@id='import-window']")).click();
+		    driver.findElement(By.xpath(".//*[@id='AddCustomerInFile']")).click();
+		    driver.findElement(By.xpath(".//*[@id='alertbox']")).click();
+		    driver.findElement(By.xpath(".//*[@id='alertOk']")).click();
+		    
+		    try {
+				Thread.sleep(3000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
 		    //driver.switchTo().defaultContent();
 		    
 		    //driver.switchTo().window(driver.getWindowHandles().toArray()[0].toString());
-		    WebElement closebutton = driver.findElement(By.xpath(".//*[@id='import-window']/div[1]"));
-		    closebutton.click();
+//		    WebElement closebutton = driver.findElement(By.xpath(".//*[@id='import-window']/div[1]"));
+//		    closebutton.click();
 	 }
 
 		    @AfterTest

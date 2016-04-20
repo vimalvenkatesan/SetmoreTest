@@ -3,12 +3,12 @@ package bookingPage;
 import org.testng.annotations.Test;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
 import Appium.Setmore_signin;
 import Utility.Reporter;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import java.util.List;
@@ -23,7 +23,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
-
+import Utility.Bookingpage;
 @Listeners(Reporter.class)
 public class BookaSlot {
 	
@@ -36,38 +36,39 @@ public class BookaSlot {
 //	sr;
 	
 
-	@BeforeMethod
-	@BeforeSuite
-	 public void setUp(){
+	 @Test(priority=1)
+	 public void setUp()
+	{
 		 driver = new FirefoxDriver();
-		 driver.get("http://live12345.setmore.com");
+		 driver.get("http://live12345.setmore.com ");
 		 driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
 	}
 
-  @Test
+	 @Test(priority=2)
   public void booking() {
 	
- 
+            System.out.println("starting");
 			// click to choose book services
-			driver.findElement(By.xpath(".//*[@id='gt_sr']")).click();
-			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//            driver.findElement(By.className(Bookingpage.BookTab)).click();
 			
-			// Click to choose service
-			driver.findElement(By.xpath(".//*[@id='se2c31440052067209']")).click();
+			
+		
+			// Click to choose service    
+			driver.findElement(By.xpath(Bookingpage.Service)).click();
 			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		
 			
 			//Click to choose date
-	       List<WebElement> date = driver.findElements(By.xpath("//td[@class='datepickerSelected']"));
-		 //List<WebElement> date = driver.findElements(By.xpath("//div[@class='datepicker']/div/table/tbody/tr/td/table/tbody[2]/tr/td[@class='' or @class='datepickerSaturday' or @class='datepickerSunday']/a/span"));
-			//List<WebElement> date = driver.findElements(By.xpath("//td[@class='']"));
+			 List<WebElement> date = driver.findElements(By.xpath(Bookingpage.TodayDate));		   
+			
+			 
 			String selectedDate		=	date.get(0).getText();
 			driver.findElement(By.linkText(selectedDate)).click();
+			System.out.println(" Selected Date :: " + selectedDate);
 
 					//List the timeslots
-					List<WebElement> availslots = driver.findElements(By.xpath("//div[@class='time_sheet']/ul[@class='morning' or 'afternoon' or 'evening']/li/a"));
-					System.out.println("Available Slots :: " + availslots);
+					List<WebElement> availslots = driver.findElements(By.xpath(Bookingpage.Timeslot));
 					int bookings 		= availslots.size();
 					System.out.println(" Time slots size :: " + bookings);
 					try
@@ -83,7 +84,9 @@ public class BookaSlot {
 								j++;
 							
 
-							for (String SelectedSlot : slots1) {
+							for (String SelectedSlot : slots1) 
+							{
+								
 								System.out.println("Selected SLot :: " + SelectedSlot);
 								driver.findElement(By.linkText(SelectedSlot)).click();
 
@@ -98,8 +101,11 @@ public class BookaSlot {
 								driver.findElement(By.className("global_btn2_rt")).click();
 								driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 								
-							break;	
-							}}
+														
+							 }
+							
+							       break;  
+							             }
 						} else
 						{
 							System.out.println("slot not available");

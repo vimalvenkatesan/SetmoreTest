@@ -66,7 +66,7 @@ else if (browser.equalsIgnoreCase("Safari"))
 public void SetmoreLogin(){
 	Log.info("Input SetMore Login Fields");
 	driver.findElement(By.id("username")).sendKeys("love12345@setmore.com");
-	driver.findElement(By.id("password")).sendKeys("Setmore");
+	driver.findElement(By.id("password")).sendKeys("setmore");
 	driver.findElement(By.xpath("/html/body/form/div/div[2]/div[1]/ul[1]/li[6]/div[3]/input")).click();
 	driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 }

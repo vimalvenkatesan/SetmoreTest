@@ -24,10 +24,10 @@ import appModule.signout;
 import Utility.Reporter;
 
 @Listeners(Reporter.class)
-public class ExportCustomer {
+public class Uploadcsv {
 	  
 	    public static WebDriver driver=new FirefoxDriver();
-     	private static Logger Log = Logger.getLogger(Customer.class.getName());
+     	private static Logger Log = Logger.getLogger(CustomerPageFull.class.getName());
 	
 	
 	  @BeforeClass

@@ -5,7 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import Utility.Constant;
 import pageObjects.SetmoreLoginPage;
-import java.util.logging.Logger;
 
 public class sigin {
    

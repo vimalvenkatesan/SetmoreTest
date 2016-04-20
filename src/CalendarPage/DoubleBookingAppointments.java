@@ -1,6 +1,9 @@
 package CalendarPage;
 
 import org.testng.annotations.Test;
+
+import Utility.Bookingpage;
+
 import org.testng.annotations.BeforeMethod;
 import java.util.concurrent.TimeUnit;
 
@@ -13,6 +16,7 @@ import org.testng.Reporter;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import appModule.signout;
@@ -21,8 +25,8 @@ public class DoubleBookingAppointments {
 	WebDriver driver;
 	String calslot = "//*[@id='calendarHolder']/div/div/div/div/div/table/tbody/tr[45]/td/table/tbody/tr/td[2]";
 
-	@BeforeMethod
-	@BeforeSuite
+	
+	@BeforeTest
 	public void setUp() {
 		driver = new FirefoxDriver();
 		driver.manage().window().maximize();
@@ -30,7 +34,7 @@ public class DoubleBookingAppointments {
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		Reporter.log("Application Lauched successfully | ");
 		driver.findElement(By.id("username")).sendKeys("love12345@setmore.com");
-		driver.findElement(By.id("password")).sendKeys("Setmore");
+		driver.findElement(By.id("password")).sendKeys("setmore");
 		driver.findElement(By.xpath(".//*[@id='Login_Form_id']/div/div[2]/div[1]/ul[1]/li[6]/div[3]/input")).click();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	}
@@ -44,7 +48,7 @@ public class DoubleBookingAppointments {
 			System.out.println(" Booked No of APPTS  :: " + i);
 			if (i != 4) {
 				try {
-					
+//					 
 					DoubleBookingAppts( i , positionOfSlots ); 
 					//positionOfSlots++;
 				} catch (InterruptedException e) {
@@ -61,7 +65,9 @@ public class DoubleBookingAppointments {
 		driver.findElement(
 				By.xpath("//*[@id='calendarHolder']/div/div/div/div/div/table/tbody/tr["+positionOfSlots+"]/td/table/tbody/tr/td[1]"))
 				.click();
-
+//		if(driver.findElement(By.id("enable")).isDisplayed())
+//		  driver.findElement(By.id("enable")).click(); 
+		
 		// click service scroll
 		driver.findElement(By.xpath("/html/body/div[3]/div[2]/div[3]/div[4]/div[3]/ul/li[2]/div[1]/a")).click();
 		// Select service
@@ -74,10 +80,10 @@ public class DoubleBookingAppointments {
 		// click continue
 		driver.findElement(By.xpath(".//*[@id='editApptPopup']/div[7]/a[1]")).click();
 		// Input cusomter name
-		driver.findElement(By.xpath(".//*[@id='editApptPopup']/div[5]/div/input")).sendKeys("Test "+i);
+		driver.findElement(By.xpath(".//*[@id='editApptPopup']/div[5]/div/input")).sendKeys("JackDouble "+i);
 		// click New customer
 		driver.findElement(By.xpath(".//*[@id='editApptPopup']/div[5]/a")).click();
-		driver.findElement(By.xpath(".//*[@id='apptCust-LoginId']")).sendKeys("test"+i+"@gmail.com");
+		driver.findElement(By.xpath(".//*[@id='apptCust-LoginId']")).sendKeys("Jacksrone"+i+"@gmail.com");
 		Thread.sleep(5000);
 		driver.findElement(By.xpath(".//*[@id='dup-appt-save-btn']")).click();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);

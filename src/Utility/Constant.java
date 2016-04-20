@@ -11,7 +11,7 @@ public class Constant
 
     public static final String Username = "love12345@setmore.com";
 
-    public static final String Password = "Setmore";
+    public static final String Password = "setmore";
     
 }
 

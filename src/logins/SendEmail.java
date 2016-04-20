@@ -53,7 +53,7 @@ public class SendEmail {
 		    Multipart multipart = new MimeMultipart();
 
 		    messageBodyPart = new MimeBodyPart();
-		    String file = "/Users/user/Documents/workspace/TestNg/test-output/";
+		    String file = "/Users/user/git/SetmoreTestNGNew/test-output/index.html";
 		   String fileName = reportFileName;
 		   DataSource source = new FileDataSource(file + fileName);
 		   messageBodyPart.setDataHandler(new DataHandler(source));

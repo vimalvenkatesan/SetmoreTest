@@ -27,10 +27,10 @@ import org.testng.annotations.*;
 import logins.Facebook_login;
 
 
-public class Setmore_signin {
+public class setmore_sigin_Emulator {
 	
 WebDriver driver;
-private static Logger Log = Logger.getLogger(Setmore_signin.class.getName());
+private static Logger Log = Logger.getLogger(setmore_sigin_Emulator.class.getName());
 
 
 @BeforeClass
@@ -39,8 +39,8 @@ public void setUp() throws MalformedURLException{
 	DesiredCapabilities capabilities = new DesiredCapabilities();
 	capabilities.setCapability("BROWSER_NAME", "Android");
 	capabilities.setCapability("VERSION", "5.1"); 
-    capabilities.setCapability("deviceName","9396aa06");
-	//capabilities.setCapability("deviceName","emulator-5554");	
+    //capabilities.setCapability("deviceName","9396aa06");
+	capabilities.setCapability("deviceName","emulator-5554");	
 	capabilities.setCapability("platformName","Android"); 	
     capabilities.setCapability("appPackage", "com.adaptavant.setmore");
     capabilities.setCapability("appActivity", "com.adaptavant.setmore.ui.StartActivity");
@@ -77,8 +77,9 @@ public void SetMoreLogin() {
 @AfterClass
 public void Log_out(){
 	
-	
-	 driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+	@SuppressWarnings("unused")
+	WebElement myDynamicElement = (new WebDriverWait(driver, 200))
+			  .until(ExpectedConditions.presenceOfElementLocated(By.id("com.adaptavant.setmore:id/myschedule_mainmenu")));
 	 Log.info("Logout method started");
 	 WebElement menu = driver.findElement(By.id("com.adaptavant.setmore:id/myschedule_mainmenu"));
 	 menu.click();

@@ -2,9 +2,14 @@ package Appium;
 
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
+
+import io.appium.java_client.AppiumDriver;
+
 import org.testng.annotations.BeforeMethod;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 import org.openqa.selenium.By;
@@ -16,7 +21,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class Book_ExtCust {
+public class trial {
 	WebDriver driver;
 	private static Logger Log = Logger.getLogger(Setmore_signin.class.getName());
 	
@@ -74,13 +79,50 @@ driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 driver.findElement(By.xpath("//android.widget.GridView[1]/android.widget.LinearLayout[1]")).click();
 driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 //driver.findElement(By.xpath("//android.widget.ListView[1]/android.widget.FrameLayout[1]")).click();
-driver.findElement(By.xpath("//android.widget.LinearLayout[1]/android.widget.LinearLayout[2]/android.widget.LinearLayout[3]/android.widget.Button[1]")).click();
+//driver.findElement(By.xpath("//android.widget.LinearLayout[1]/android.widget.LinearLayout[2]/android.widget.LinearLayout[3]/android.widget.Button[1]")).click();
 //driver.findElement(By.xpath("com.adaptavant.setmore:id/create_appt_search_resource_et")).click();
 //driver.findElement(By.xpath("com.adaptavant.setmore:id/create_appt_search_resource_et")).sendKeys("Abc");
 //driver.findElement(By.xpath("com.adaptavant.setmore:id/create_appt_search_resource_et")).sendKeys(Keys.TAB);
-//android.widget.ListView[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[2]/android.widget.TextView[1]
-driver.findElement(By.xpath("//android.widget.ListView[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[2]/android.widget.TextView[1]")).click();
+//android.widget.ListView[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLa
 driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+
+driver.findElement(By.xpath("//android.widget.LinearLayout[2]/android.widget.LinearLayout[1]/android.widget.Button[1]")).click();
+System.out.println("Test1");
+//driver.findElement(By.xpath("//android.widget.ScrollView[1]/android.widget.EditText[1]")).click();
+//System.out.println("Test2");
+//
+//
+//List<WebElement> editTxt = driver.findElements(By.xpath("");
+//
+//editTxt.get(0).sendKeys("TestAppium1");
+//editTxt.get(1).sendKeys("971111155");
+//
+//driver.findElement(By.id("com.android.contacts:id/menu_done")).click();
+
+
+HashMap<String, Integer> tapObject = new HashMap<String, Integer>();
+
+tapObject.put("x", 75); // in pixels from left
+tapObject.put("y", 734); // in pixels from top
+((AppiumDriver) driver).executeScript("mobile: tap", tapObject);
+
+tapObject.put("x", 1050); // in pixels from left
+tapObject.put("y", 872); // in pixels from top
+((AppiumDriver) driver).executeScript("mobile: tap", tapObject);
+
+System.out.println("Test3");
+
+((AppiumDriver) driver).executeScript("mobile: tap", tapObject);
+
+driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+
+driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+
+driver.findElement(By.xpath("//android.widget.ScrollView[1]/android.widget.EditText[3]")).click();
+
+
+
+
 driver.findElement(By.id("com.adaptavant.setmore:id/create_appt_save_bt")).click();
 Log.info("Appointment booked with Existing Cusotmer");
 try {
