@@ -39,7 +39,7 @@ public class Create_NewAccount {
     	Log.info("createaccount");
 		driver.findElement(By.xpath(".//*[@id='login_header']/div/a/span")).click();
 		driver.findElement(By.xpath(".//*[@id='name-signup']")).sendKeys("Create");
-		driver.findElement(By.xpath(".//*[@id='email-signup']")).sendKeys("Create007@setmore.com");
+		driver.findElement(By.xpath(".//*[@id='email-signup']")).sendKeys("Create012@setmore.com");
 		driver.findElement(By.xpath(".//*[@id='password-signup']")).sendKeys("setmore");
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		driver.findElement(By.xpath(".//*[@id='signup-popup-form']/a")).click();
