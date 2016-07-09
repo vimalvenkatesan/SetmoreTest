@@ -3,12 +3,12 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="bookingPage.Tests">
+      <class name="LearningSection.ExtentReport">
         <methods>
-          <include name="setUp"/>
-          <include name="booking"/>
+          <include name="tearDown"/>
+          <include name="verifyTitle"/>
         </methods>
-      </class> <!-- bookingPage.Tests -->
+      </class> <!-- LearningSection.ExtentReport -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

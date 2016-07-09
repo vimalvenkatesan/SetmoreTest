@@ -39,7 +39,7 @@ import org.testng.annotations.BeforeClass;
 			
 			driver.get(Constant.URL);
 			Log.info("Singin started");
-			driver.findElement(By.id("username")).sendKeys("sports@setmore.com");
+			driver.findElement(By.id("username")).sendKeys("onida123@setmore.com");
 			driver.findElement(By.id("password")).sendKeys("setmore");
 			driver.findElement(By.xpath("/html/body/form/div/div[2]/div[1]/ul[1]/li[6]/div[3]/input")).click();
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -68,12 +68,12 @@ import org.testng.annotations.BeforeClass;
 //						e.printStackTrace();
 //					}
 				
-			int apptCount = 1;
+			int apptCount = 1500;
 			
 			for (int i = 1; i <= apptCount; i++) 
 			{	
 				System.out.println(" Customer created No::" + i);
-			if (i != 3) 
+			if (i != 1500) 
 			{
 				try 
 				{
@@ -92,6 +92,13 @@ import org.testng.annotations.BeforeClass;
 			public void CustomerInput( int i ) throws InterruptedException 
 			{
 			Log.info("Cusomter Details Entered");
+			
+			try {
+				Thread.sleep(3000);
+			} catch (InterruptedException e){
+				// TODO Auto-generated catch block
+			e.printStackTrace();
+	          }
 			
 			driver.findElement(By.id("newCustomer")).click();
 			

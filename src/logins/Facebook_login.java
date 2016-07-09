@@ -46,7 +46,7 @@ public class Facebook_login {
 		Log.info("Input FaceBook_Login Fields");
 		driver.findElement(By.className("facebook_signin_btn")).click();
 		driver.findElement(By.id("email")).sendKeys("jacksrone@gmail.com");
-		driver.findElement(By.id("pass")).sendKeys("Indian123$");
+		driver.findElement(By.id("pass")).sendKeys("Setmore^7");
 		driver.findElement(By.id("loginbutton")).click();
 	}
 	

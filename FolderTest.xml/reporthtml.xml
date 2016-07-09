@@ -1,14 +1,14 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="suite" verbose="1" >
-<listeners>
-      <listener class-name="org.uncommons.reportng.HTMLReporter"/>
-      <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
-  </listeners>
+<suite name="suite" verbose="1">
+	<listeners>
+		<listener class-name="org.uncommons.reportng.HTMLReporter" />
+		<listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
+	</listeners>
 
 
-  <test name="Google">
-    <classes>
-       <class name="logins.Google_login" />
-    </classes>
-  </test>
+	<test name="Google">
+		<classes>
+			<class name="logins.Google_login" />
+		</classes>
+	</test>
 </suite>

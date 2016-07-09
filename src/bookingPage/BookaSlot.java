@@ -40,7 +40,7 @@ public class BookaSlot {
 	 public void setUp()
 	{
 		 driver = new FirefoxDriver();
-		 driver.get("http://live12345.setmore.com ");
+		 driver.get("http://live12345.setmore.com");
 		 driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
 	}

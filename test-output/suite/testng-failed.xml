@@ -1,25 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite thread-count="3" guice-stage="DEVELOPMENT" name="Failed suite [Suite]" parallel="tests">
-  <parameter name="browser" value="Safari"/>
-  <listeners>
-    <listener class-name="org.uncommons.reportng.HTMLReporter"/>
-    <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
-  </listeners>
-  <test name="FirefoxTest(failed)" parallel="tests">
-    <parameter name="browser" value="firefox"/>
-    <classes>
-      <class name="logins.SetMorelogincrossbrowser">
-        <methods>
-          <include name="beforeTest"/>
-          <include name="Close_window"/>
-          <include name="beforeTest"/>
-          <include name="Close_window"/>
-          <include name="beforeTest"/>
-          <include name="Close_window"/>
-          <include name="SetmoreLogin"/>
-        </methods>
-      </class> <!-- logins.SetMorelogincrossbrowser -->
-    </classes>
-  </test> <!-- FirefoxTest(failed) -->
+<suite thread-count="1" guice-stage="DEVELOPMENT" name="Failed suite [Suite]"
+	parallel="tests">
+	<parameter name="browser" value="Safari" />
+	<test name="FirefoxTest">
+		<parameter name="browser" value="firefox" />
+		<classes>
+			<class name="logins.multibrowser" />
+		</classes>
+	</test> <!-- FirefoxTest -->
+	<test name="ChromeTest">
+		<parameter name="browser" value="Chrome" />
+		<classes>
+			<class name="logins.multibrowser" />
+		</classes>
+	</test> <!-- ChromeTest -->
+	<test name="SafariTest">
+		<parameter name="browser" value="Safari" />
+		<classes>
+			<class name="logins.multibrowser" />
+		</classes>
+	</test> <!-- SafariTest -->
+	<test name="ChromeTest(failed)" parallel="tests">
+		<parameter name="browser" value="Chrome" />
+		<classes>
+			<class name="logins.multibrowser">
+				<methods>
+					<include name="login" />
+					<include name="afterTest" />
+					<include name="afterTest" />
+					<include name="beforeTest" />
+					<include name="beforeTest" />
+					<include name="beforeTest" />
+				</methods>
+			</class> <!-- logins.multibrowser -->
+		</classes>
+	</test> <!-- ChromeTest(failed) -->
+	<test name="SafariTest(failed)" parallel="tests">
+		<parameter name="browser" value="Safari" />
+		<classes>
+			<class name="logins.multibrowser">
+				<methods>
+					<include name="login" />
+					<include name="afterTest" />
+					<include name="afterTest" />
+					<include name="beforeTest" />
+					<include name="beforeTest" />
+					<include name="beforeTest" />
+				</methods>
+			</class> <!-- logins.multibrowser -->
+		</classes>
+	</test> <!-- SafariTest(failed) -->
 </suite> <!-- Failed suite [Suite] -->

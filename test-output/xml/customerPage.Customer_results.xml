@@ -1,22 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="CustomerPage"
-           tests="8"
-           failures="0"
-           errors="0"
-           skipped="1"
-           time="110.578">
-  <properties />
-  
-            <testcase name="CustomerInput" time="0.0" classname="customerPage.Customer">
-          <skipped />
-    </testcase>
-  
-            <testcase name="CustomerTab" time="0.709" classname="customerPage.Customer" />
-                <testcase name="Deletecustomer_Many" time="15.969" classname="customerPage.Customer" />
-                <testcase name="ImportCustomer" time="26.901" classname="customerPage.Customer" />
-                <testcase name="CreateCustomer" time="16.082" classname="customerPage.Customer" />
-                <testcase name="ExportCustomer" time="20.705" classname="customerPage.Customer" />
-                <testcase name="mergecustomers" time="20.395" classname="customerPage.Customer" />
-                <testcase name="DeleteCusotmer" time="9.817" classname="customerPage.Customer" />
-      
+<testsuite name="CustomerPage" tests="8" failures="0" errors="0"
+	skipped="1" time="110.578">
+	<properties />
+
+	<testcase name="CustomerInput" time="0.0" classname="customerPage.Customer">
+		<skipped />
+	</testcase>
+
+	<testcase name="CustomerTab" time="0.709" classname="customerPage.Customer" />
+	<testcase name="Deletecustomer_Many" time="15.969"
+		classname="customerPage.Customer" />
+	<testcase name="ImportCustomer" time="26.901" classname="customerPage.Customer" />
+	<testcase name="CreateCustomer" time="16.082" classname="customerPage.Customer" />
+	<testcase name="ExportCustomer" time="20.705" classname="customerPage.Customer" />
+	<testcase name="mergecustomers" time="20.395" classname="customerPage.Customer" />
+	<testcase name="DeleteCusotmer" time="9.817" classname="customerPage.Customer" />
+
 </testsuite>

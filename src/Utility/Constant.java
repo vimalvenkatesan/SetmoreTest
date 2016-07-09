@@ -4,7 +4,8 @@ public class Constant
 
 
 {
-	 
+  //public static final String URL = "https://452-dot-setmoreappointments.appspot.com/index.jsp";
+	
     public static final String URL = "https://my.setmore.com";
     
     public static final String StagingURL = "https://staging.setmore.com";

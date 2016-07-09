@@ -3,43 +3,172 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="" lang="">
 <head>
-  <title>Test Results Report - FirefoxTest</title>
-  <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-  <meta name="description" content="TestNG unit test results." />
-  <link href="reportng.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="reportng.js"></script>
+<title>Test Results Report - customer</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="description" content="TestNG unit test results." />
+<link href="reportng.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="reportng.js"></script>
 </head>
 <body>
-<h1>FirefoxTest</h1>
-<p>
-  Test duration: 27.769s
-</p>
+	<h1>customer</h1>
+	<p>Test duration: 235.828s</p>
 
 
 
+	<table class="resultsTable">
+		<tr>
+			<th colspan="3" class="header failed">Failed Tests</th>
+		</tr>
+		<tr>
+			<td colspan="3" class="group">customerPage.CustomerPageFull</td>
+		</tr>
 
+		<tr>
+			<td class="method">DeleteCusotmer</td>
+			<td class="duration">31.119s</td>
+			<td class="result"><a
+				href="javascript:toggleElement('exception-0', 'block')"
+				title="Click to expand/collapse"><b>org.openqa.selenium.ElementNotVisibleException:
+						Element is not currently visible and so may not be interacted with<br />
+						Command duration or timeout: 30.14 seconds<br /> Build info:
+						version: &apos;2.48.2&apos;, revision: &apos;41bccdd&apos;, time:
+						&apos;2015-10-09 19:55:52&apos;<br /> System info: host:
+						&apos;V7V-SEM-AIR.local&apos;, ip: &apos;1.1.6.103&apos;, os.name:
+						&apos;Mac OS X&apos;, os.arch: &apos;x86_64&apos;, os.version:
+						&apos;10.10.5&apos;, java.version: &apos;1.8.0_60&apos;<br />
+						Driver info: org.openqa.selenium.firefox.FirefoxDriver<br />
+						Capabilities [{applicationCacheEnabled=true, rotatable=false,
+						handlesAlerts=true, databaseEnabled=true, version=35.0.1,
+						platform=MAC, nativeEvents=false, acceptSslCerts=true,
+						webStorageEnabled=true, locationContextEnabled=true,
+						browserName=firefox, takesScreenshot=true, javascriptEnabled=true,
+						cssSelectorsEnabled=true}]<br /> Session ID:
+						9f0d65ad-6da0-b34e-a176-3f097c0020e8
+				</b></a><br />
+				<div class="stackTrace" id="exception-0">
+					sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native
+					Method)<br />
+					sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)<br />
+					sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)<br />
+					java.lang.reflect.Constructor.newInstance(Constructor.java:422)<br />
+					org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)<br />
+					org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)<br />
+					org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:647)<br />
+					org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:326)<br />
+					org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:84)<br />
+					customerPage.CustomerPageFull.DeleteCusotmer(CustomerPageFull.java:147)<br />
+					sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)<br />
+					sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)<br />
+					sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)<br />
+					java.lang.reflect.Method.invoke(Method.java:497)<br />
+					org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:85)<br />
+					org.testng.internal.Invoker.invokeMethod(Invoker.java:639)<br />
+					org.testng.internal.Invoker.invokeTestMethod(Invoker.java:821)<br />
+					org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1131)<br />
+					org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:124)<br />
+					org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:108)<br />
+					org.testng.TestRunner.privateRun(TestRunner.java:773)<br />
+					org.testng.TestRunner.run(TestRunner.java:623)<br />
+					org.testng.SuiteRunner.runTest(SuiteRunner.java:357)<br />
+					org.testng.SuiteRunner.runSequentially(SuiteRunner.java:352)<br />
+					org.testng.SuiteRunner.privateRun(SuiteRunner.java:310)<br />
+					org.testng.SuiteRunner.run(SuiteRunner.java:259)<br />
+					org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)<br />
+					org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)<br />
+					org.testng.TestNG.runSuitesSequentially(TestNG.java:1185)<br />
+					org.testng.TestNG.runSuitesLocally(TestNG.java:1110)<br />
+					org.testng.TestNG.run(TestNG.java:1018)<br />
+					org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)<br />
+					org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)<br />
+					org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)<br /> <b>Caused
+						by: </b> <a href="javascript:toggleElement('exception-1', 'block')"
+						title="Click to expand/collapse">org.openqa.selenium.ElementNotVisibleException:
+						Element is not currently visible and so may not be interacted with<br />
+						Build info: version: &apos;2.48.2&apos;, revision:
+						&apos;41bccdd&apos;, time: &apos;2015-10-09 19:55:52&apos;<br />
+						System info: host: &apos;V7V-SEM-AIR.local&apos;, ip:
+						&apos;1.1.6.103&apos;, os.name: &apos;Mac OS X&apos;, os.arch:
+						&apos;x86_64&apos;, os.version: &apos;10.10.5&apos;, java.version:
+						&apos;1.8.0_60&apos;<br /> Driver info: driver.version: unknown
+					</a><br />
+					<div class="stackTrace" id="exception-1">
+						&lt;anonymous
+						class&gt;.fxdriver.preconditions.visible(file:///var/folders/2_/_4n5mvz941d4fkblxrjtvcm80000gp/T/anonymous8189207478345547260webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:9981)<br />
+						&lt;anonymous
+						class&gt;.DelayedCommand.prototype.checkPreconditions_(file:///var/folders/2_/_4n5mvz941d4fkblxrjtvcm80000gp/T/anonymous8189207478345547260webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12517)<br />
+						&lt;anonymous
+						class&gt;.DelayedCommand.prototype.executeInternal_/h(file:///var/folders/2_/_4n5mvz941d4fkblxrjtvcm80000gp/T/anonymous8189207478345547260webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12534)<br />
+						&lt;anonymous
+						class&gt;.fxdriver.Timer.prototype.setTimeout/&lt;.notify(file:///var/folders/2_/_4n5mvz941d4fkblxrjtvcm80000gp/T/anonymous8189207478345547260webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:621)<br />
+					</div>
+				</div></td>
+		</tr>
+	</table>
 
-  <table class="resultsTable">
-    <tr><th colspan="3" class="header passed">Passed Tests</th></tr>
-          <tr>
-        <td colspan="3" class="group">logins.SetMorelogincrossbrowser</td>
-      </tr>
-            
-<tr>
-  <td class="method">
-                  SetmoreLogin
-      </td>
-  <td class="duration">
-    13.289s
-  </td>
-  <td class="result">
-        
-    
-        
+	<table class="resultsTable" width="100%">
+		<tr>
+			<th colspan="3" class="header skipped">Skipped Tests</th>
+		</tr>
+		<tr>
+			<td colspan="3" class="group">customerPage.CustomerPageFull</td>
+		</tr>
 
-      </td>
-</tr>
-      </table>
-  
+		<tr>
+			<td class="method">CustomerInput</td>
+			<td class="duration">0.000s</td>
+			<td class="result"></td>
+		</tr>
+	</table>
+
+	<table class="resultsTable">
+		<tr>
+			<th colspan="3" class="header passed">Passed Tests</th>
+		</tr>
+		<tr>
+			<td colspan="3" class="group">customerPage.CustomerPageFull</td>
+		</tr>
+
+		<tr>
+			<td class="method">BookCustomer</td>
+			<td class="duration">32.366s</td>
+			<td class="result"></td>
+		</tr>
+		<tr>
+			<td class="method">ConnectMailChimp</td>
+			<td class="duration">34.214s</td>
+			<td class="result"></td>
+		</tr>
+		<tr>
+			<td class="method">CreateCustomer</td>
+			<td class="duration">22.518s</td>
+			<td class="result"></td>
+		</tr>
+		<tr>
+			<td class="method">CustomerTab</td>
+			<td class="duration">0.533s</td>
+			<td class="result"></td>
+		</tr>
+		<tr>
+			<td class="method">Deletecustomer_Many</td>
+			<td class="duration">17.833s</td>
+			<td class="result"></td>
+		</tr>
+		<tr>
+			<td class="method">ExportCustomer</td>
+			<td class="duration">15.087s</td>
+			<td class="result"></td>
+		</tr>
+		<tr>
+			<td class="method">ImportCustomer</td>
+			<td class="duration">30.636s</td>
+			<td class="result"></td>
+		</tr>
+		<tr>
+			<td class="method">mergecustomers</td>
+			<td class="duration">12.762s</td>
+			<td class="result"></td>
+		</tr>
+	</table>
+
 </body>
 </html>

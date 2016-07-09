@@ -38,7 +38,7 @@ import org.testng.annotations.AfterTest;
 			//driver.get(Constant.Staging_URL);
 			
 			driver.get(Constant.URL);
-			Log.info("Singin started");
+			Log.info("Signin started");
 			driver.findElement(By.id("username")).sendKeys("homework@setmore.com");
 			driver.findElement(By.id("password")).sendKeys("setmore");
 			driver.findElement(By.xpath("/html/body/form/div/div[2]/div[1]/ul[1]/li[6]/div[3]/input")).click();

@@ -83,6 +83,7 @@ driver.findElement(By.xpath("//android.widget.ListView[1]/android.widget.FrameLa
 driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 driver.findElement(By.id("com.adaptavant.setmore:id/create_appt_save_bt")).click();
 Log.info("Appointment booked with Existing Cusotmer");
+ExistingCustomer();
 try {
 	Thread.sleep(12000);
 } catch (InterruptedException e) {

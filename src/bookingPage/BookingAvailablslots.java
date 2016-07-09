@@ -51,7 +51,8 @@ public class BookingAvailablslots {
 //			Dimension targetSize = new Dimension(1440, 900); 
 //			driver.manage().window().setSize(targetSize);
 //			driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-			driver.get("http://live12345.setmore.com");
+//			driver.get("http://live12345.setmore.com");		  
+			 driver.get("http://rrr.setmore.com");
 			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
 	}
@@ -64,21 +65,24 @@ public class BookingAvailablslots {
 				driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 				System.out.println("Gonna click services");
 				// Click to choose service    
-				driver.findElement(By.xpath(Bookingpage.Service)).click();
+//				driver.findElement(By.xpath(Bookingpage.Service)).click();
+//				For bookinge page Reminder@setmore.com
+				driver.findElement(By.xpath(".//*[@id='sbfd99b1b14e3f3ed67fcede9b397ea17d71eee06']")).click();
 				driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
 		
 			
 			//Click to choose date
 	        //List<WebElement> date = driver.findElements(By.xpath(""));
-		      List<WebElement> date = driver.findElements(By.xpath("//div[@class='datepicker']/div/table/tbody/tr/td/table/tbody[2]/tr/td[@class='' or @class='datepickerSaturday' or @class='datepickerSunday']/a/span"));
+		      List<WebElement> date = driver.findElements(By.xpath("//div[@class='datepickerSaturday datepickerSelected' or @class='datepicker']/div/table/tbody/tr/td/table/tbody[2]/tr/td[@class='' or @class='datepickerSaturday' or @class='datepickerSunday']/a/span"));
 			//List<WebElement> date = driver.findElements(By.xpath("//td[@class='']"));
-			String selectedDate		=	date.get(0).getText();
+//			String selectedDate		=	date.get(0).getText();
+		      String selectedDate		=	date.get(0).getText();
 			driver.findElement(By.linkText(selectedDate)).click();
-			System.out.println("selectedDate");
+			System.out.println("selectedDate :: " + selectedDate);
 					//List the timeslots
 					List<WebElement> availslots = driver.findElements(By.xpath("//div[@class='time_sheet']/ul[@class='morning' or 'afternoon' or 'evening']/li/a"));
-					System.out.println("Available Slots :: " + availslots);
+//					System.out.println("Available Slots :: " + availslots);
 					int bookings 		= availslots.size();
 					System.out.println(" Time slots size :: " + bookings);
 					try
@@ -90,7 +94,7 @@ public class BookingAvailablslots {
 							// System.out.println(" available slots :: "+availslots);
 							for (WebElement avail : availslots) {
 								slots1[j] = avail.getText();
-								System.out.println(slots1[j]);
+//								System.out.println(slots1[j]);
 								j++;
 							}
 
@@ -99,7 +103,11 @@ public class BookingAvailablslots {
 								driver.findElement(By.linkText(SelectedSlot)).click();
 
 								driver.findElement(By.id("cust-IName")).sendKeys(
-										"Vimal Tester");
+										"SundayGym");
+								driver.findElement(By.xpath(".//*[@id='cust-IEmailId']")).sendKeys(
+										"jacksrone@gmail.com");
+								driver.findElement(By.xpath(".//*[@id='cust-PhoneNo']")).sendKeys(
+										"9791171017");
 								// Click on continue
 								driver.findElement(
 										By.xpath(".//*[@id='cust-continue']")).click();

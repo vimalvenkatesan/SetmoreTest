@@ -1,38 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Suite1]">
-  <listeners>
-    <listener class-name="org.uncommons.reportng.HTMLReporter"/>
-    <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
-  </listeners>
-  <test name="Facebook(failed)">
-    <classes>
-      <class name="logins.Facebook_login">
-        <methods>
-          <include name="login"/>
-          <include name="Facebook_Loign"/>
-        </methods>
-      </class> <!-- logins.Facebook_login -->
-      <class name="logins.Google_login">
-        <methods>
-          <include name="login"/>
-        </methods>
-      </class> <!-- logins.Google_login -->
-    </classes>
-  </test> <!-- Facebook(failed) -->
-  <test name="Google(failed)">
-    <classes>
-      <class name="logins.Facebook_login">
-        <methods>
-          <include name="login"/>
-        </methods>
-      </class> <!-- logins.Facebook_login -->
-      <class name="logins.Google_login">
-        <methods>
-          <include name="login"/>
-          <include name="GoogleLoign"/>
-        </methods>
-      </class> <!-- logins.Google_login -->
-    </classes>
-  </test> <!-- Google(failed) -->
+	<listeners>
+		<listener class-name="org.uncommons.reportng.HTMLReporter" />
+		<listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
+	</listeners>
+	<test name="Facebook(failed)">
+		<classes>
+			<class name="logins.Facebook_login">
+				<methods>
+					<include name="login" />
+					<include name="Facebook_Loign" />
+				</methods>
+			</class> <!-- logins.Facebook_login -->
+			<class name="logins.Google_login">
+				<methods>
+					<include name="login" />
+				</methods>
+			</class> <!-- logins.Google_login -->
+		</classes>
+	</test> <!-- Facebook(failed) -->
+	<test name="Google(failed)">
+		<classes>
+			<class name="logins.Facebook_login">
+				<methods>
+					<include name="login" />
+				</methods>
+			</class> <!-- logins.Facebook_login -->
+			<class name="logins.Google_login">
+				<methods>
+					<include name="login" />
+					<include name="GoogleLoign" />
+				</methods>
+			</class> <!-- logins.Google_login -->
+		</classes>
+	</test> <!-- Google(failed) -->
 </suite> <!-- Failed suite [Suite1] -->

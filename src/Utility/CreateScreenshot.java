@@ -10,12 +10,13 @@ import org.openqa.selenium.WebDriver;
 
 public class CreateScreenshot
 {
-	public static void snap(WebDriver driver,String screen){
+	
+	public static String snap(WebDriver driver,String screen){
     String path;
     try {
         
     	File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        path = "./Snapshot/"+screen+".jpeg";
+        path = "./Snapshot/"+screen+".png";
         FileUtils.copyFile(scrFile, new File(path)); 
         System.out.println("Snapshot Taken");
      
@@ -25,6 +26,6 @@ public class CreateScreenshot
         path = "Failed to capture screenshot: " + e.getMessage();
 //        System.out.println("Snapshot Taken");
     }
-    return;
+    return path;
 }
 }
