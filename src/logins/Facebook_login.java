@@ -40,13 +40,13 @@ public class Facebook_login {
 	
 	
 	@Test
-	public void Facebook_Loign()
+	public void Facebook_Login()
 	
 	{   
 		Log.info("Input FaceBook_Login Fields");
 		driver.findElement(By.className("facebook_signin_btn")).click();
 		driver.findElement(By.id("email")).sendKeys("jacksrone@gmail.com");
-		driver.findElement(By.id("pass")).sendKeys("Setmore^7");
+		driver.findElement(By.id("pass")).sendKeys("Setmore^9");
 		driver.findElement(By.id("loginbutton")).click();
 	}
 	

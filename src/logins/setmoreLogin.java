@@ -40,9 +40,10 @@ import org.testng.annotations.Test;
 import Utility.Constant;
 import Utility.CreateScreenshot;
 import appModule.signout;
+import logins.Log4j;
 
 
-public class Setmore_login {		
+public class setmoreLogin {		
 	
 
 	
@@ -71,7 +72,7 @@ public class Setmore_login {
 		Log.info("Input SetMore Login Fields");
 		driver.findElement(By.id("username")).sendKeys("jacksrone@gmail.com");
 		driver.findElement(By.id("password")).sendKeys("setmore");
-		driver.findElement(By.xpath(".//*[@xpath='Login_Form_id']/div/div[2]/div[1]/ul[1]/li[6]/div[3]/input")).click();
+		driver.findElement(By.xpath(".//*[@id='Login_Form_id']/div/div[2]/div[1]/ul[1]/li[6]/div[3]/input")).click();
 //		CreateScreenshot.snap(driver,"loggedina");
 	}
 	//
@@ -86,7 +87,7 @@ public class Setmore_login {
     @AfterMethod
     public void tearDown(ITestResult result)
     {
-   if(ITestResult.FAILURE==result.getStatus())
+   if(ITestResult.SUCCESS==result.getStatus())
 	{
 	  CreateScreenshot.snap(driver,result.getName()); 
      }

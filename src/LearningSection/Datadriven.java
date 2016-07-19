@@ -5,18 +5,19 @@ import java.io.FileInputStream;
 
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.annotations.Test;
 
 public class Datadriven {
 
-	
-	
-	
-	public static void main(String[]args)throws Exception{
 		
 		
-		File src =new File("/Users/user/Documents/excelsheet 1.ods");
-		FileInputStream fis = new FileInputStream(src);	
-		XSSFWorkbook wb=new XSSFWorkbook(fis);
+		@Test
+		public static void main(String[]args)throws Exception{
+		
+		
+		File src =new File("./Users/user/Documents/Excel.xls");
+		FileInputStream fs = new FileInputStream(src);	
+		XSSFWorkbook wb=new XSSFWorkbook(fs);
 		XSSFSheet sheet1 =wb.getSheetAt(0);
 		
 		int rowcount=sheet1.getLastRowNum();
@@ -24,10 +25,10 @@ public class Datadriven {
 		
 		for(int i=0;i<rowcount;i++)
 		{
-		String data0=sheet1.getRow(i).getCell(0).getStringCellValue();
-		System.out.print("Data from Row"+ "is"+data0);
+		String Cellgetcontent=sheet1.getRow(i).getCell(0).getStringCellValue();
+		System.out.print("Data from Row"+ "is"+Cellgetcontent);
 		}
-	
-wb.close();
-}
-}
+			
+		wb.close();
+		}
+		}

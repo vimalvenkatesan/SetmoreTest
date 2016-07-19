@@ -1,18 +1,15 @@
 package LearningSection;
 import java.awt.Frame;
 
-import org.apache.log4j.chainsaw.Main;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
-
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 import com.sun.media.jfxmedia.logging.Logger;
-
 import Utility.CreateScreenshot;
 import junit.framework.Assert;
 public class ExtentReport

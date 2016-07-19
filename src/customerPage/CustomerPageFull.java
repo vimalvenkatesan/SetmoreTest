@@ -1,5 +1,11 @@
 			package customerPage;
 			import org.testng.annotations.Test;
+
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
+import com.sun.mail.handlers.image_jpeg;
+
 import org.testng.annotations.BeforeClass;
 			import java.util.concurrent.TimeUnit;
 			import java.util.logging.Logger;
@@ -11,32 +17,35 @@ import org.testng.annotations.BeforeClass;
 			import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 			import org.testng.annotations.BeforeClass;
 			import org.testng.annotations.Listeners;
 			import org.testng.annotations.Test;
 			import Utility.Constant;
-			import Utility.Reporter;
+import Utility.CreateScreenshot;
+import Utility.Reporter;
 			import appModule.signout;
 			
 			@Listeners(Reporter.class)
 			public class CustomerPageFull {
 			
+				 ExtentReports report;
+				 ExtentTest logger1;
+				 WebDriver driver;
 			
 			
-			public static WebDriver driver=new FirefoxDriver();
 			private static Logger Log = Logger.getLogger(CustomerPageFull.class.getName());
 			
 		    @BeforeClass
 			public void Login()
 			{
-		    	
+		    report = new ExtentReports("/Users/user/Downloads/Xslt_reports/customerpage.html");
+			logger1 =report.startTest("CustomerPage Full results");		    	
 		    Log.info("Web application launched");
-			// driver.get("https://www.setmore.com/");
-			//driver.get("https://my.setmore.com/");
-			//driver.get("https://staging.setmore.com");
-			//driver.get(Constant.Staging_URL);
 			
+		    driver=new FirefoxDriver();
 			driver.get(Constant.URL);
 			Log.info("Signin started");
 			driver.findElement(By.id("username")).sendKeys("homework@setmore.com");
@@ -498,12 +507,31 @@ import org.testng.annotations.AfterTest;
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				}
-			 }
-				    @AfterTest
+				}}
+			
+			 @Test(priority=9)
 				    public void Logout()
 				    {	
 				    signout.Execute(driver);
 				    Log.info("Logout buddy :) ");
-			}	   
+		    
+			 }   
+				    @AfterTest
+					public void tearDown(ITestResult result)
+					
+					{
+						if(result.getStatus()==ITestResult.FAILURE)
+							
+						{
+							String path=CreateScreenshot.snap(driver, result.getName());
+							String image_jpeg= logger1.addScreenCapture(path);
+							logger1.log(LogStatus.PASS,"Final Result", image_jpeg);
+						}
+					
+					report.endTest(logger1);
+					report.flush();
+					
+					driver.get("/Users/user/Downloads/Xslt_reports/customerpage.html");
+					}
 			}
+			

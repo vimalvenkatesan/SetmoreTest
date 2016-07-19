@@ -3,12 +3,13 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="LearningSection.ExtentReport">
+      <class name="LearningSection.uploadCsv">
         <methods>
-          <include name="tearDown"/>
-          <include name="verifyTitle"/>
+          <include name="opensetmore"/>
+          <include name="Logout"/>
+          <include name="two"/>
         </methods>
-      </class> <!-- LearningSection.ExtentReport -->
+      </class> <!-- LearningSection.uploadCsv -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

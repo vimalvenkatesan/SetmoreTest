@@ -16,7 +16,7 @@ public class CreateScreenshot
     try {
         
     	File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        path = "./Snapshot/"+screen+".png";
+        path = "./Snapshot/"+screen+".jpeg";
         FileUtils.copyFile(scrFile, new File(path)); 
         System.out.println("Snapshot Taken");
      
