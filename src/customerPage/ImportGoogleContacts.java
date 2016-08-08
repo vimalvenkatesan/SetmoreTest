@@ -67,13 +67,11 @@ public class ImportGoogleContacts {
 		 try {
 			Thread.sleep(3000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
-//		    WebDriverWait wait = new WebDriverWait(driver, 5); 
-//			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[3]/div[2]/div[6]/div/div[1]/div[1]/div[3]/div[2]/ul/li[3]")));  // until this submenu is found
-
-			//identify menu option from the resulting menu display and click
+		 
+		 //identify menu option from the resulting menu display and click
 			WebElement menuOption = driver.findElement(By.xpath("/html/body/div[3]/div[2]/div[6]/div/div[1]/div[1]/div[3]/div[2]/ul/li[3]"));
 			menuOption.click();
 	
@@ -91,9 +89,6 @@ public class ImportGoogleContacts {
 
 	        }
 		    
-			//driver.switchTo().window(driver.getWindowHandles().toArray()[1].toString());
-		    //driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		    //driver.findElement(By.xpath(" .//*[@id='account-chooser-add-account']"));
 		    
 		    WebDriverWait wait1 = new WebDriverWait(driver, 5); 
      		wait1.until(ExpectedConditions.presenceOfElementLocated(By.xpath(".//*[@id='Email']")));
@@ -142,11 +137,6 @@ public class ImportGoogleContacts {
 				e.printStackTrace();
 			}
 		
-		    //driver.switchTo().defaultContent();
-		    
-		    //driver.switchTo().window(driver.getWindowHandles().toArray()[0].toString());
-//		    WebElement closebutton = driver.findElement(By.xpath(".//*[@id='import-window']/div[1]"));
-//		    closebutton.click();
 	 }
 
 		    @AfterTest

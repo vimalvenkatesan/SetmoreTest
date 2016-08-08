@@ -1,29 +1,22 @@
 package CalendarPage;
 
 import org.testng.annotations.Test;
-
-import Utility.Bookingpage;
-
-import org.testng.annotations.BeforeMethod;
 import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Reporter;
-import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
-
 import appModule.signout;
 
 public class DoubleBookingAppointments {
+	
 	WebDriver driver;
-	String calslot = "//*[@id='calendarHolder']/div/div/div/div/div/table/tbody/tr[45]/td/table/tbody/tr/td[2]";
+	//String calslot = "//*[@id='calendarHolder']/div/div/div/div/div/table/tbody/tr[45]/td/table/tbody/tr/td[2]";
 
 	
 	@BeforeTest
@@ -33,7 +26,7 @@ public class DoubleBookingAppointments {
 		driver.get("https://my.setmore.com/");
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		Reporter.log("Application Lauched successfully | ");
-		driver.findElement(By.id("username")).sendKeys("jacksrone@gmail.com");
+		driver.findElement(By.id("username")).sendKeys("love12345@setmore.com");
 		driver.findElement(By.id("password")).sendKeys("setmore");
 		driver.findElement(By.xpath(".//*[@id='Login_Form_id']/div/div[2]/div[1]/ul[1]/li[6]/div[3]/input")).click();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -48,7 +41,7 @@ public class DoubleBookingAppointments {
 			System.out.println(" Booked No of APPTS  :: " + i);
 			if (i != 4) {
 				try {
-//					 
+				 
 					DoubleBookingAppts( i , positionOfSlots ); 
 					//positionOfSlots++;
 				} catch (InterruptedException e) {
@@ -97,7 +90,7 @@ public class DoubleBookingAppointments {
 		}
 	} 
 
-	 @AfterTest
+	 @AfterMethod
 	    public void Logout()
 	    
 	    {	

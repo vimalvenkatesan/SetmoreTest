@@ -39,22 +39,23 @@ public class Singlebooking {
 	driver.findElement(By.id("password")).sendKeys("setmore");
 	driver.findElement(By.xpath(".//*[@id='Login_Form_id']/div/div[2]/div[1]/ul[1]/li[6]/div[3]/input")).click();
 	driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-	;}
+	}
 
 	 @Test
 	 public void book() throws InterruptedException 		
-	{	 
-		     driver.findElement(By.xpath("//div[@id='calendarHolder']//following::td[@class='fc-tue fc-col1 fc-widget-content']/div/div/div")).click();
-		    // 
-		   //div[contains(@href,'8am')] and text()='position:relative']
+	{	 		 
+		 int positionOfSlots = 52;		 
+//		 driver.findElement(
+//					By.xpath("//*[@id='calendarHolder']/div/div/div/div/div/table/tbody/tr["+positionOfSlots+"]/td/table/tbody/tr/td[1]"))
+//					.click();
+		     driver.findElement(By.xpath(".//*[@id='calendarHolder']/div/div/div/div/div/table/tbody/tr["+positionOfSlots+"]/td")).click();
+		   
+		 
 				//click service scroll
 			 driver.findElement(By.xpath("/html/body/div[3]/div[2]/div[3]/div[4]/div[3]/ul/li[2]/div[1]/a")).click();
 				 //Select service 
 			 driver.findElement(By.xpath(".//*[@id='service-se2c31440052067209']")).click();
 				Thread.sleep(5000);
-				Log.info("Lets one4");
-//     		 WebDriverWait wait = new WebDriverWait(driver, 10);
-//			 wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[3]/div[2]/div[3]/div[4]/div[7]/a[1]")));
 				Log.info("Two");
 				  //click continue
 			 driver.findElement(By.xpath("/html/body/div[3]/div[2]/div[3]/div[4]/div[7]/a[1]")).click();
