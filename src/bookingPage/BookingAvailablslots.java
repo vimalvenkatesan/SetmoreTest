@@ -73,10 +73,10 @@ public class BookingAvailablslots {
 		
 			
 			//Click to choose date
-	        //List<WebElement> date = driver.findElements(By.xpath(""));
-		      List<WebElement> date = driver.findElements(By.xpath("//div[@class='datepickerSaturday datepickerSelected' or @class='datepicker']/div/table/tbody/tr/td/table/tbody[2]/tr/td[@class='' or @class='datepickerSaturday' or @class='datepickerSunday']/a/span"));
-			//List<WebElement> date = driver.findElements(By.xpath("//td[@class='']"));
-//			String selectedDate		=	date.get(0).getText();
+	       // List<WebElement> date = driver.findElements(By.xpath(".//*[@id='datepicker_1']/div"));
+		   //DT**   List<WebElement> date = driver.findElements(By.xpath("//div[@class='datepickerSaturday datepickerSelected' or @class='datepicker']/div/table/tbody/tr/td/table/tbody[2]/tr/td[@class='' or @class='datepickerSaturday' or @class='datepickerSunday']/a/span"));
+			List<WebElement> date = driver.findElements(By.xpath(".//div[@class='datepickerContainer']//table[@class='datepickerViewDays']/tbody[contains(@class,'datepickerDays')]/tr/td[@class='' or @class='datepickerSaturday' or @class='datepickerSunday']/a/span"));
+			System.out.println("date :: " + date);
 		      String selectedDate		=	date.get(0).getText();
 			driver.findElement(By.linkText(selectedDate)).click();
 			System.out.println("selectedDate :: " + selectedDate);

@@ -10,6 +10,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -19,11 +21,13 @@ import Utility.Constant;
 import Utility.Reporter;
 import customerPage.AddCustomer;
 @Listeners(Reporter.class)
-public class ManySession {
+public class singlesession {
+	
+	WebDriverWait wait=new WebDriverWait(driver, 60,5000); 
 
 	
 	   public static WebDriver driver=new FirefoxDriver();
-	    private static Logger Log = Logger.getLogger(ManySession.class.getName());
+	    private static Logger Log = Logger.getLogger(singlesession.class.getName());
 	
 	    @BeforeClass
 		public void Login()
@@ -37,7 +41,7 @@ public class ManySession {
 		driver.findElement(By.id("password")).sendKeys("setmore");
 		driver.manage().window().maximize();
 		driver.findElement(By.xpath("/html/body/form/div/div[2]/div[1]/ul[1]/li[6]/div[3]/input")).click();
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		//driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	  
         }
 	    
@@ -62,7 +66,7 @@ public class ManySession {
 	    }
 	    @SuppressWarnings("unused")
 		@Test(priority=2)
-	    public void createservices()
+	    public void createservices() throws InterruptedException
 	    { 
 	    Log.info("Create class");
 	    
@@ -99,15 +103,28 @@ public class ManySession {
 	    {
 	    //class id 
 	    driver.findElement(By.xpath(".//*[@id='cafd651470643859287']/div[3]")).click(); 
-	    driver.findElement(By.xpath(".//*[@id='addClassSession']")).click();
 	    
-	    //click session pop-up 
-	    driver.findElement(By.xpath(".//*[@id='editClassApptPopup']/div[2]")).click();
-	    driver.findElement(By.xpath(".//*[@id='editClassApptPopup']/div[2]/ul/li[6]/input")).click();
+	    for(int j=0; j<=1; j++)
+	    
+	    {
+	    //Thread.sleep(10000);	
+	    wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='addClassSession']")));
+	    
+	    driver.findElement(By.xpath(".//*[@id='addClassSession']")).click();
+	    Thread.sleep(10000);
+	    wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='editClassApptPopup']/div[2]/ul/li[6]/input")));
+	    
+	    //click session pop-up   
+//	   driver.findElement(By.xpath(".//*[@id='editClassApptPopup']/div[2]")).click();
+	    
+	   //seats
+	    driver.findElement(By.xpath(".//*[@id='editClassApptPopup']/div[2]/ul/li[6]/input")).click();  
+	    Thread.sleep(5000);
 	    driver.findElement(By.xpath(".//*[@id='editClassApptPopup']/div[2]/ul/li[6]/input")).sendKeys("1000");
+	    Thread.sleep(2000);
 	  
 	    //Click Never
-	    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+	   // driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	    driver.findElement(By.xpath(".//*[@id='editClassApptPopup']/div[2]/ul/li[5]/div[1]")).click();
 	    driver.findElement(By.xpath(".//*[@id='editClassApptPopup']/div[2]/ul/li[5]/div[1]/ul/li/div[1]")).click();
 	   
@@ -122,35 +139,53 @@ public class ManySession {
 	        //Click Daily
 	   
 	    System.out.println("Check for Daily"); 
-	    driver.findElement(By.xpath(".//*[@id='repeatType-daily']")).click();
-	    driver.findElement(By.xpath(".//*[@id='editClassApptPopup']/div[2]/ul/li[5]/div[1]/ul/li[3]/div[1]")).click();
+	    /*driver.findElement(By.xpath(".//*[@id='repeatType-daily']")).click();
+	    driver.findElement(By.xpath(".//*[@id='editClassApptPopup']/div[2]/ul/li[5]/div[1]/ul/li[3]/div[1]")).click();*/
 	    
+	    driver.findElement(By.xpath("//*[@id='editClassApptPopup']/div[2]/ul/li[5]/div[1]/ul/li/div[1]/a")).click();
+	    Thread.sleep(2000);
+	    driver.findElement(By.xpath("//*[@id='editClassApptPopup']/div[2]/ul/li[5]/div[1]/ul/li/div[1]")).click();
+	    Thread.sleep(2000);
+	    driver.findElement(By.xpath("//*[@id='repeatType-daily']")).click();
+	    Thread.sleep(2000);
+	    driver.findElement(By.xpath("//*[@id='editClassApptPopup']/div[2]/ul/li[5]/div[1]/ul/li[3]/div[1]")).click();
+	    Thread.sleep(2000);
+	    //driver.findElement(By.xpath(".//*[@id='datepicker_673']/div[9]")).click();
+	    //driver.switchTo().activeElement();
 	    //New code
+	    List<WebElement> datepickers =	driver.findElements(By.className("datepicker"));
+	    
+	    for(WebElement elem : datepickers)
+	    {
+	    	System.out.println(elem.getAttribute("id"));
+	    }
+	    WebElement lastPicker	=	 datepickers.get(datepickers.size()  - 1);
+	      System.out.println(lastPicker.getAttribute("id"));
+	      WebElement nextArrow	=   lastPicker.findElement(By.xpath(".//div[@class='datepickerContainer']/table/tbody/tr/td/table/thead/tr[1]/th[3]/a"));
+	      //date.get
+	    //  System.out.println(date.getText());
+	     // date.click();
+	      
+	      for(int i = 1; i <= 10;i++)
+	      {
+	    	  nextArrow.click();
+	      }
+	      
+	      WebElement date30july = lastPicker.findElement(By.xpath(".//div[@class='datepickerContainer']/table/tbody/tr/td/table/tbody[2]/tr[5]/td[5]/a"));
+	      date30july.click();
+	    
+	    
+	    //(".//*[@id='datepicker_673'])
+	    //driver.findElement(By.xpath(".//*[@id='datepicker_673']/div[9]/table/tbody/tr/td/table/tbody[2]/tr[5]/td[3]/a/span")).click();
 	    System.out.println("Check for List");
-	  //  List<WebElement> dates = driver.findElements(By.xpath("//div[@class='datepickerSaturday datepickerSelected' or @class='datepicker']/div/table/tbody/tr/td/table/tbody[2]/tr/td[@class='' or @class='datepickerSaturday' or @class='datepickerSunday']/a/span"));
-      //  List<WebElement> dates = driver.findElements(By.xpath(".//*[@id='datepicker_302']/div[9]/table/tbody/tr/td/table/tbody[@class='datepickerYears']/tr[2]/td[3]"));
-   
-	    //***********//
-        List<WebElement> dates = driver.findElements(By.xpath(""));
-		int Totaldates 		= dates.size();
-		System.out.println(" Total Dates  :: " + Totaldates);
+	    
+  
 
-		
-		for(int i=0; i<Totaldates; i++)
-		{
-		String date =	dates.get(i).getText();
-			if(date.equalsIgnoreCase("30"));
-			{
-				dates.get(i).click();
-				break;
-			}
-		}
-		//**********//
-	    //Save
-	    driver.findElement(By.xpath(".//*[@id='addClassSession']")).click();
+	    //Save;
+	    driver.findElement(By.className("class-popup-details-save-btn")).click();
 	    
-	    
-	 
+	  Thread.sleep(80000);
+	    }
 	    
 	    }
 	   
