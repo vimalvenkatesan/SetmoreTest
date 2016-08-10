@@ -101,13 +101,13 @@ public class singlesession {
 	    
 	    }else
 	    {
-	    //class id 
+	    //Click class id 
 	    driver.findElement(By.xpath(".//*[@id='cafd651470643859287']/div[3]")).click(); 
 	    
 	    for(int j=0; j<=1; j++)
 	    
 	    {
-	    //Thread.sleep(10000);	
+	  
 	    wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='addClassSession']")));
 	    
 	    driver.findElement(By.xpath(".//*[@id='addClassSession']")).click();
@@ -115,15 +115,15 @@ public class singlesession {
 	    wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='editClassApptPopup']/div[2]/ul/li[6]/input")));
 	    
 	    //click session pop-up   
-//	   driver.findElement(By.xpath(".//*[@id='editClassApptPopup']/div[2]")).click();
+       // driver.findElement(By.xpath(".//*[@id='editClassApptPopup']/div[2]")).click();
 	    
-	   //seats
+	   //Update seats
 	    driver.findElement(By.xpath(".//*[@id='editClassApptPopup']/div[2]/ul/li[6]/input")).click();  
 	    Thread.sleep(5000);
 	    driver.findElement(By.xpath(".//*[@id='editClassApptPopup']/div[2]/ul/li[6]/input")).sendKeys("1000");
 	    Thread.sleep(2000);
 	  
-	    //Click Never
+	    //Click Never select Box
 	   // driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	    driver.findElement(By.xpath(".//*[@id='editClassApptPopup']/div[2]/ul/li[5]/div[1]")).click();
 	    driver.findElement(By.xpath(".//*[@id='editClassApptPopup']/div[2]/ul/li[5]/div[1]/ul/li/div[1]")).click();
@@ -138,9 +138,9 @@ public class singlesession {
 	        
 	        //Click Daily
 	   
-	    System.out.println("Check for Daily"); 
+	     System.out.println("Click  Daily"); 
 	    /*driver.findElement(By.xpath(".//*[@id='repeatType-daily']")).click();
-	    driver.findElement(By.xpath(".//*[@id='editClassApptPopup']/div[2]/ul/li[5]/div[1]/ul/li[3]/div[1]")).click();*/
+	     driver.findElement(By.xpath(".//*[@id='editClassApptPopup']/div[2]/ul/li[5]/div[1]/ul/li[3]/div[1]")).click();*/
 	    
 	    driver.findElement(By.xpath("//*[@id='editClassApptPopup']/div[2]/ul/li[5]/div[1]/ul/li/div[1]/a")).click();
 	    Thread.sleep(2000);
@@ -150,21 +150,17 @@ public class singlesession {
 	    Thread.sleep(2000);
 	    driver.findElement(By.xpath("//*[@id='editClassApptPopup']/div[2]/ul/li[5]/div[1]/ul/li[3]/div[1]")).click();
 	    Thread.sleep(2000);
-	    //driver.findElement(By.xpath(".//*[@id='datepicker_673']/div[9]")).click();
-	    //driver.switchTo().activeElement();
-	    //New code
+	   
 	    List<WebElement> datepickers =	driver.findElements(By.className("datepicker"));
 	    
 	    for(WebElement elem : datepickers)
 	    {
 	    	System.out.println(elem.getAttribute("id"));
 	    }
-	    WebElement lastPicker	=	 datepickers.get(datepickers.size()  - 1);
+	      WebElement lastPicker	=	 datepickers.get(datepickers.size()  - 1);
 	      System.out.println(lastPicker.getAttribute("id"));
 	      WebElement nextArrow	=   lastPicker.findElement(By.xpath(".//div[@class='datepickerContainer']/table/tbody/tr/td/table/thead/tr[1]/th[3]/a"));
-	      //date.get
-	    //  System.out.println(date.getText());
-	     // date.click();
+	    
 	      
 	      for(int i = 1; i <= 10;i++)
 	      {
@@ -173,18 +169,13 @@ public class singlesession {
 	      
 	      WebElement date30july = lastPicker.findElement(By.xpath(".//div[@class='datepickerContainer']/table/tbody/tr/td/table/tbody[2]/tr[5]/td[5]/a"));
 	      date30july.click();
-	    
-	    
-	    //(".//*[@id='datepicker_673'])
-	    //driver.findElement(By.xpath(".//*[@id='datepicker_673']/div[9]/table/tbody/tr/td/table/tbody[2]/tr[5]/td[3]/a/span")).click();
-	    System.out.println("Check for List");
-	    
-  
-
+	      
 	    //Save;
 	    driver.findElement(By.className("class-popup-details-save-btn")).click();
-	    
-	  Thread.sleep(80000);
+	    System.out.println("Booking in process");
+	    Thread.sleep(80000);
+	    System.out.println("Next Iterations");
+	  
 	    }
 	    
 	    }
