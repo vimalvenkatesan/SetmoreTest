@@ -3,12 +3,13 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="SettingsPage.ManySession">
+      <class name="SettingsPage.singlesession">
         <methods>
-          <include name="Login"/>
           <include name="createservices"/>
+          <include name="Login"/>
+          <include name="SettingsTab"/>
         </methods>
-      </class> <!-- SettingsPage.ManySession -->
+      </class> <!-- SettingsPage.singlesession -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

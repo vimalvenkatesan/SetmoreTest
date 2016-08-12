@@ -41,5 +41,6 @@
 	<classpathentry kind="lib" path="/Users/user/Downloads/poi-3.15-beta2/poi-ooxml-3.15-beta2.jar"/>
 	<classpathentry kind="lib" path="/Users/user/Downloads/poi-3.15-beta2/poi-3.15-beta2.jar"/>
 	<classpathentry kind="lib" path="/Users/user/Downloads/poi-3.15-beta2/poi-scratchpad-3.15-beta2.jar"/>
+	<classpathentry kind="lib" path="/Users/user/Downloads/java-client-4.1.1-sources (1).jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
