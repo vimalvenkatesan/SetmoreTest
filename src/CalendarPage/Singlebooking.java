@@ -46,8 +46,8 @@ public class Singlebooking {
 	 @Test
 	 public void book() throws InterruptedException 		
 	{	
-		 //Always change this
-		 int positionOfSlots = 64;		 
+		 
+		 int positionOfSlots = 80;		 
 
 		     driver.findElement(By.xpath(".//*[@id='calendarHolder']/div/div/div/div/div/table/tbody/tr["+positionOfSlots+"]/td")).click();
 		   
@@ -55,7 +55,7 @@ public class Singlebooking {
 		//click service scroll
 		//	 driver.findElement(By.xpath("/html/body/div[3]/div[2]/div[3]/div[4]/div[3]/ul/li[2]/div[1]/a")).click();
 			 driver.findElement(By.xpath(".//*[@id='editApptPopup']/div[3]/ul/li[2]/div[1]/a")).click();
-				 //Select service = check the id if broken
+				 //Select service 
 			 driver.findElement(By.xpath(".//*[@id='service-sa0d61450771373756']")).click();
 				Thread.sleep(5000);
 				Log.info("Two");

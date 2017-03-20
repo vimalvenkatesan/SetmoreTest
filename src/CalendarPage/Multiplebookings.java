@@ -20,8 +20,7 @@ public class Multiplebookings {
 	
 	WebDriver driver;
 	//String calslot = "//*[@id='calendarHolder']/div/div/div/div/div/table/tbody/tr[48]/td/table/tbody/tr/td[4]";
-	int apptCount 			= 200;
-	int positionOfSlots 	= 65;
+	
 	
 	
 	
@@ -39,13 +38,16 @@ public class Multiplebookings {
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	}
 
-	@Test(priority=2)
+	@Test(priority=1)
 	public void bookLimitedAppts() 
 	{
+		int apptCount 			= 200;
+	    int positionOfSlots 	= 105;
 		
 		for (int i = 1; i <= apptCount; i++) {
-			System.out.println(" Booked No of APPTS  :: " + i);
-			if (i != 4) {
+			
+			if (i <= 2) {
+				System.out.println(" Booked No of APPTS  :: " + i);
 				try {
 					
 					this.BookingAppts( positionOfSlots );
@@ -59,12 +61,10 @@ public class Multiplebookings {
 		}
 	}
 
-	@Test(priority=1)
+	@Test(priority=2)
 	public void BookingAppts( int positionOfSlots ) throws InterruptedException {
-		
-		driver.findElement(
-				By.xpath(".//*[@id='startCalendar']"))
-				.click();
+		System.out.println("positionOfSlots :: "+positionOfSlots);
+
 		driver.findElement(
 				By.xpath("//*[@id='calendarHolder']/div/div/div/div/div/table/tbody/tr["+positionOfSlots+"]/td/div"))
 				.click();
@@ -76,7 +76,7 @@ public class Multiplebookings {
 		// wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(".//*[@id='editApptPopup']/div[8]/a[1]")));
 
 		// click continue
-		driver.findElement(By.xpath(".//*[@id='editApptPopup']/div[7]/a[1]")).click();
+		driver.findElement(By.className("appt-save-btn")).click();
 		// Input cusomter name
 	//	driver.findElement(By.xpath(".//*[@id='editApptPopup']/div[5]/div/input")).sendKeys("Oats"+i);
 		driver.findElement(By.xpath(".//*[@id='editApptPopup']/div[5]/div/input")).sendKeys("Marksandspencers");
@@ -90,7 +90,7 @@ public class Multiplebookings {
 		driver.findElement(By.xpath(".//*[@id='apptCust-MobileNo']")).sendKeys("9791171017");
 		
 		Thread.sleep(5000);
-		driver.findElement(By.xpath(".//*[@id='editApptPopup']/div[7]/a[1]")).click();
+		driver.findElement(By.xpath(".//*[@id='dup-appt-save-btn']")).click();
 		
 		
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -98,7 +98,9 @@ public class Multiplebookings {
 			Thread.sleep(5000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
-			
+			System.out.println(e.getMessage());
+			positionOfSlots++; 
+			bookLimitedAppts();
 		}
 			Thread.sleep(5000);
 	}

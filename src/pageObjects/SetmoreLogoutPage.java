@@ -10,6 +10,13 @@ package pageObjects;
  public class SetmoreLogoutPage {
 
  private static WebElement element = null;
+ 
+ public static WebElement DashBoard(WebDriver driver){
+
+	    element = driver.findElement(By.xpath(".//*[@id='startDashboard']"));
+
+	    return element;
+ }
 
  public static WebElement Calendar(WebDriver driver){
 
@@ -20,7 +27,7 @@ package pageObjects;
     }
  public static WebElement Customer(WebDriver driver){
 
-    element = driver.findElement(By.xpath(".//*[@id='headerNav']/ul/li[4]/a']"));
+    element = driver.findElement(By.xpath(".//*[@id='side-nav-customers']"));
 
     return element;
 
@@ -28,21 +35,21 @@ package pageObjects;
 
  public static WebElement Profile(WebDriver driver){
 
-    element = driver.findElement(By.xpath(".//*[@id='online_booking']/a']"));
+    element = driver.findElement(By.xpath(".//*[@id='side-profile']/a"));
 
     return element;
 
     }
  public static WebElement Settings(WebDriver driver){
 
-	    element = driver.findElement(By.xpath(".//*[@id='settings_new']/a']"));
+	    element = driver.findElement(By.xpath(".//*[@id='settings_new']/a"));
 
 	    return element;
 
 	    }
  public static WebElement Account_Menu(WebDriver driver){
 
-    element = driver.findElement(By.xpath(".//*[@id='account_menu']"));
+    element = driver.findElement(By.xpath(".//*[@id='account_menu']/a"));
 
     return element;
 
@@ -50,7 +57,7 @@ package pageObjects;
 
  public static WebElement SignOut(WebDriver driver){
 
-    element = driver.findElement(By.xpath(".//*[@id='sign_out']"));
+    element = driver.findElement(By.xpath(".//*[@id='sign_out']/a/div[2]"));
 
  return element;
 

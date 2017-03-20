@@ -32,14 +32,14 @@ public class DoubleBookingAppointments {
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	}
 
-	@Test
+	@Test(priority=1)
 	public void bookLimitedAppts() 
 	{
 		int apptCount 			= 4;
-		int positionOfSlots 	= 50;
+		int positionOfSlots 	= 90;
 		for (int i = 1; i <= apptCount; i++) {
 			System.out.println(" Booked No of APPTS  :: " + i);
-			if (i != 4) {
+			if (i <= 4) {
 				try {
 				 
 					DoubleBookingAppts( i , positionOfSlots ); 
@@ -52,26 +52,25 @@ public class DoubleBookingAppointments {
 		}
 	}
 
-	@Test
+	@Test(priority=2)
 	public void DoubleBookingAppts( int i , int positionOfSlots ) throws InterruptedException {
 
 		driver.findElement(
-				By.xpath("//*[@id='calendarHolder']/div/div/div/div/div/table/tbody/tr["+positionOfSlots+"]/td/table/tbody/tr/td[1]"))
+				By.xpath("//*[@id='calendarHolder']/div/div/div/div/div/table/tbody/tr["+positionOfSlots+"]/td/div"))
 				.click();
 //		if(driver.findElement(By.id("enable")).isDisplayed())
 //		  driver.findElement(By.id("enable")).click(); 
 		
 		// click service scroll
-		driver.findElement(By.xpath("/html/body/div[3]/div[2]/div[3]/div[4]/div[3]/ul/li[2]/div[1]/a")).click();
-		// Select service.//*[@id='service-se2c31440052067209']
-		driver.findElement(By.xpath(".//*[@id='service-s5ec31455692004514']")).click();
+		driver.findElement(By.xpath(".//*[@id='editApptPopup']/div[3]/ul/li[2]/div[1]/a")).click();
+		driver.findElement(By.xpath(".//*[@id='service-sa0d61450771373756']")).click();
 		Thread.sleep(5000);
 
 		 WebDriverWait wait = new WebDriverWait(driver, 10);
-		 wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(".//*[@id='editApptPopup']/div[7]/a[1]")));
+		 wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("appt-save-btn")));
 
-		// click continue
-		driver.findElement(By.xpath(".//*[@id='editApptPopup']/div[7]/a[1]")).click();
+			// click continue
+			driver.findElement(By.className("appt-save-btn")).click();
 		// Input cusomter name
 		driver.findElement(By.xpath(".//*[@id='editApptPopup']/div[5]/div/input")).sendKeys("JackDouble "+i);
 		// click New customer
@@ -84,11 +83,10 @@ public class DoubleBookingAppointments {
 			Thread.sleep(5000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
-			// handle the exception...
-			// For example consider calling Thread.currentThread().interrupt();
-			// here.
-		}
-	} 
+			System.out.println(e.getMessage());
+			positionOfSlots++; 
+			bookLimitedAppts();
+	} }
 
 //	 @AfterMethod
 //	    public void Logout()
@@ -96,5 +94,5 @@ public class DoubleBookingAppointments {
 //	    {	
 //	    signout.Execute(driver);
 //		}
-		
+//		
 	}
