@@ -12,10 +12,8 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-import Utility.Bookingpage;
 import Utility.Constant;
 import Utility.Reporter;
-import customerPage.AddCustomer;
 @Listeners(Reporter.class)
 public class createclass {
 
@@ -28,9 +26,7 @@ public class createclass {
 		{
 	    	
 	    Log.info("Web application launched");
-		// driver.get("https://www.setmore.com/");
-		//driver.get("https://my.setmore.com/");
-		//driver.get("https://staging.setmore.com");
+	
 		//driver.get(Constant.Staging_URL);
 		
 		driver.get(Constant.URL);
@@ -39,7 +35,7 @@ public class createclass {
 		driver.findElement(By.id("password")).sendKeys("setmore");
 		driver.findElement(By.xpath("/html/body/form/div/div[2]/div[1]/ul[1]/li[6]/div[3]/input")).click();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-//		driver.manage().window().maximize();
+		driver.manage().window().maximize();
 	  
         }
 	    
@@ -68,8 +64,8 @@ public class createclass {
 	    	driver.findElement(By.xpath(".//*[@id='noClass']/button")).click();
 	    
 	    else {
-	    driver.findElement(By.xpath(".//*[@id='addNewClass']")).click();
-	    }
+	    driver.findElement(By.id("addNewClass")).click();
+	    
 	    driver.findElement(By.xpath(".//*[@id='class_title']")).click();
 	    driver.findElement(By.xpath(".//*[@id='class_title']")).sendKeys("Class One");
 	    
@@ -87,5 +83,5 @@ public class createclass {
 
 		
 	
-	    }
+	    }}
 	    }

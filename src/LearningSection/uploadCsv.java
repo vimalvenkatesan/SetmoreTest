@@ -2,7 +2,6 @@ package LearningSection;
 
 import org.testng.annotations.Test;
 import org.testng.annotations.BeforeClass;
-
 import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -25,7 +24,7 @@ import appModule.signout;
 import Utility.Reporter;
 
 @Listeners(Reporter.class)
-public class uploadCsv {
+ public class uploadCsv { 
 	
 	  	String filepath = "/Users/user/Downloads/SampleCSVFile_11kb.csv";
 	    public static WebDriver driver=new FirefoxDriver();
@@ -38,7 +37,7 @@ public class uploadCsv {
 	    	Log.info("Web application launched");	    	
 	    	driver.get(Constant.URL);
 	    	driver.findElement(By.id("username")).sendKeys("jacksrone@gmail.com");
-	    	driver.findElement(By.id("password")).sendKeys("setmore");
+	    	driver.findElement(By.id("password")).sendKeys("Setmore");
 	    	driver.findElement(By.xpath("/html/body/form/div/div[2]/div[1]/ul[1]/li[6]/div[3]/input")).click();
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			driver.manage().window().maximize();
@@ -75,8 +74,8 @@ public class uploadCsv {
 	
 		    WebElement Csvupload_link = driver.findElement(By.xpath(".//*[@id='importCSVContacts']/div"));
 		    Csvupload_link.click();
-		    
-		    
+
+	    
 		//	Runtime.getRuntime().exec("osascript"+"//Users/user/Desktop/Applescr.scpt");
 		    
 		Runtime runtime = Runtime.getRuntime();
@@ -104,7 +103,7 @@ public class uploadCsv {
 //				e.printStackTrace();
 //			}
 //		    
-		    
+		        
 		    System.out.println("First name");
 			  driver.findElement(By.xpath(".//*[@id='import-window']")).click();
 			  driver.findElement(By.xpath(".//*[@id='import-window']/div[2]/ul[1]/li/div[2]/div/a")).click();
@@ -115,31 +114,33 @@ public class uploadCsv {
 //			  driver.findElement(By.xpath(".//*[@id='import-window']/div[2]/ul[1]/li/div[4]/div/ul/li[3]")).click();
 			  System.out.println("Import contacts");
 			  driver.findElement(By.xpath(".//*[@id='AddCustomerInFile']")).click();
-//			  driver.findElement(By.xpath("")).click();
+//			  
 			 
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);		 		
-	    	System.out.println("Click Import contacts");
-		    driver.findElement(By.xpath(".//*[@id='AddCustomerInFile']")).click(); 
+	    	System.out.println("Imported csv contacts successfully");
+
 		    
-		    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		    driver.findElement(By.xpath(".//*[@id='alertContent']")).click();
-		    driver.findElement(By.id("alertOk")).click();
-		    		    
 		    try {
-				Thread.sleep(3000);
-			} catch (InterruptedException e) {
+				Thread.sleep(1000);
+			} catch (InterruptedException e1) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				e1.printStackTrace();
 			}
+		    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		    driver.findElement(By.id("alertbox")).click();
+		 
+		    driver.findElement(By.id("alertClose")).click();
+		    
 		
 	
 	 }
 
-		    @AfterTest
-		    public void Logout()
-		    {	
-		    signout.Execute(driver);
-		    Log.info("Logout buddy :) ");
-			}	   
+//		    @AfterTest
+//		    public void Logout(){
+//		    {	
+//		    signout.Execute(driver);
+//		    Log.info("Logout buddy :) ");
+//			}	   
+ 
 }	    
 	  

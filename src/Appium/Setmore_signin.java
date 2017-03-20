@@ -65,18 +65,17 @@ public class Setmore_signin {
 
 	}
 
-	@AfterClass
-	public void Log_out() {
-
-		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-		Log.info("Logout method started");
-		WebElement menu = driver.findElement(By.id("com.adaptavant.setmore:id/myschedule_mainmenu"));
-		menu.click();
-		WebElement setmore_signin = driver.findElement(By.id("com.adaptavant.setmore:id/menu_signout"));
-		setmore_signin.click();
-		WebElement alert_signout = driver.findElement(By.id("com.adaptavant.setmore:id/ConfirmLayout"));
-		alert_signout.click();
+//	@AfterClass
+//	public void Log_out() {
+//
+//		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+//		Log.info("Logout method started");
+//		WebElement menu = driver.findElement(By.id("com.adaptavant.setmore:id/myschedule_mainmenu"));
+//		menu.click();
+//		WebElement setmore_signin = driver.findElement(By.id("com.adaptavant.setmore:id/menu_signout"));
+//		setmore_signin.click();
+//		WebElement alert_signout = driver.findElement(By.id("com.adaptavant.setmore:id/ConfirmLayout"));
+//		alert_signout.click();
 
 	}
 
-}

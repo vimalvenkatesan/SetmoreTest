@@ -58,7 +58,7 @@ public class setmoreLogin {
 	
 	{
 		report = new ExtentReports("/Users/user/Downloads/Xslt_reports/Page1.html");
-		logger1 =report.startTest("Test1verifyblogtitle");
+		logger1 =report.startTest("Report Results");
 		//ExtentReports extent = new ExtentReports("/Users/user/Downloads/extentreports-java-v2.41.1/Reports.json",true);
 		Log.info("Lets Login");
 		driver=new FirefoxDriver();
@@ -75,7 +75,7 @@ public class setmoreLogin {
 	{	
 		Log.info("Input SetMore Login Fields");
 		driver.findElement(By.id("username")).sendKeys("jacksrone@gmail.com");
-		driver.findElement(By.id("password")).sendKeys("setmore");
+		driver.findElement(By.id("password")).sendKeys("Setmore");
 		driver.findElement(By.xpath(".//*[@id='Login_Form_id']/div/div[2]/div[1]/ul[1]/li[6]/div[3]/input")).click();
 //		CreateScreenshot.snap(driver,"loggedina");
 	}
@@ -92,12 +92,12 @@ public class setmoreLogin {
 	public void tearDown(ITestResult result)
 	
 	{
-		if(result.getStatus()==ITestResult.SUCCESS)
+		if(result.getStatus()==ITestResult.FAILURE)
 			
 		{
-			String path=CreateScreenshot.snap(driver, result.getName());
-			String image_jpeg = logger1.addScreenCapture(path);
-			logger1.log(LogStatus.PASS,"Title verification",image_jpeg);
+			String screenshot=CreateScreenshot.snap(driver, result.getName());
+			String image = logger1.addScreenCapture(screenshot);
+			logger1.log(LogStatus.FAIL,"Result verification",image);
 		}
 	
 	report.endTest(logger1);

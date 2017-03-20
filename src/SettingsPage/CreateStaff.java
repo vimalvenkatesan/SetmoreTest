@@ -8,12 +8,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import Utility.Constant;
 import Utility.Reporter;
+import appModule.signout;
 import customerPage.AddCustomer;
 @Listeners(Reporter.class)
 public class CreateStaff {
@@ -38,7 +40,7 @@ public class CreateStaff {
 		driver.findElement(By.id("password")).sendKeys("setmore");
 		driver.findElement(By.xpath("/html/body/form/div/div[2]/div[1]/ul[1]/li[6]/div[3]/input")).click();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-//		driver.manage().window().maximize();
+		driver.manage().window().maximize();
 	  
         }
 	    
@@ -66,7 +68,7 @@ public class CreateStaff {
 		driver.findElement(By.xpath(".//*[@id='staffNewName']")).clear();
 		
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		driver.findElement(By.xpath(".//*[@id='staffNewName']")).sendKeys("StaffOne1");
+		driver.findElement(By.xpath(".//*[@id='staffNewName']")).sendKeys("NewdStaff");
 		
 		Log.info("Staff Email");
 		
@@ -74,16 +76,28 @@ public class CreateStaff {
 		driver.findElement(By.xpath(".//*[@id='staffNewEmail']")).clear();
 		
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		driver.findElement(By.xpath(".//*[@id='staffNewEmail']")).sendKeys("StaffOne1@email.com");
+		driver.findElement(By.xpath(".//*[@id='staffNewEmail']")).sendKeys("Staffsf@email.com");
 	    
 		driver.findElement(By.xpath(".//*[@id='addstaff']")).click();
-		
-		Log.info("Staff Services");
-		
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		driver.findElement(By.xpath(".//*[@id='staffContentNav']/ul/li[2]/a")).click();
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		driver.findElement(By.xpath(".//*[@id='staff-services']/div/div[2]/ul/li[1]")).click();
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+//		Log.info("Staff Services");
+//		
+//		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+//		driver.findElement(By.xpath(".//*[@id='staffContentNav']/ul/li[2]/a")).click();
+//		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+//		driver.findElement(By.xpath(".//*[@id='staff-services']/div/div[2]/ul/li[1]")).click();
 		
 	    }
-	    }
+	    
+@AfterTest
+public void Logout()
+
+{	
+signout.Execute(driver);
+}
+}

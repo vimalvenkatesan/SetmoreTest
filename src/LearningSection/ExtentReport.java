@@ -26,7 +26,7 @@ public class ExtentReport
 		
 	
    report = new ExtentReports("/Users/user/Downloads/Xslt_reports/Page.html");
-   logger1 =report.startTest("Test1verifyblogtitle");
+   logger1 =report.startTest("Extended report");
 
 		driver = new FirefoxDriver();
 		
@@ -50,7 +50,7 @@ public class ExtentReport
 		{
 			String path=CreateScreenshot.snap(driver, result.getName());
 			String image= logger1.addScreenCapture(path);
-			logger1.log(LogStatus.FAIL,"Title verification", image);
+			logger1.log(LogStatus.FAIL,"Extended Report", image);
 		}
 	
 	report.endTest(logger1);

@@ -8,12 +8,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import Utility.Constant;
 import Utility.Reporter;
+import appModule.signout;
 import customerPage.AddCustomer;
 @Listeners(Reporter.class)
 public class createservice {
@@ -38,7 +41,7 @@ public class createservice {
 		driver.findElement(By.id("password")).sendKeys("setmore");
 		driver.findElement(By.xpath("/html/body/form/div/div[2]/div[1]/ul[1]/li[6]/div[3]/input")).click();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-//		driver.manage().window().maximize();
+		driver.manage().window().maximize();
 	  
         }
 	    
@@ -56,7 +59,7 @@ public class createservice {
 	
 	    
 	    @Test(priority=2)
-	    public void createservices()
+	    public void createservices() throws InterruptedException
 	    { 
 	    Log.info("Create service");
 	    
@@ -86,16 +89,23 @@ public class createservice {
 	    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	    driver.findElement(By.xpath(".//*[@id='saveNewService']")).click();
 	    
-	    
-	    Log.info("Create Category");
-	    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-	    driver.findElement(By.xpath(".//*[@id='addCategoryPlus']")).click();
-	    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-	    driver.findElement(By.xpath(".//*[@id='categoryNewName']")).click();
-	    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-	    driver.findElement(By.xpath(".//*[@id='categoryNewName']")).sendKeys("Service Category");
-	    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-	    driver.findElement(By.xpath(".//*[@id='addCategory']")).click();
+//	    
+//	    Log.info("Create Category");
+//	    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+//	    driver.findElement(By.xpath(".//*[@id='addCategoryPlus']")).click();
+//	    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+//	    driver.findElement(By.xpath(".//*[@id='categoryNewName']")).click();
+//	    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+//	    driver.findElement(By.xpath(".//*[@id='categoryNewName']")).sendKeys("Service Category");
+//	    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+//	    driver.findElement(By.xpath(".//*[@id='addCategory']")).click();
 	
 	    }
-	    }
+	    
+@AfterTest
+public void Logout()
+
+{	
+signout.Execute(driver);
+}
+}

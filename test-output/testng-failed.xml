@@ -3,13 +3,12 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="SettingsPage.singlesession">
+      <class name="customerPage.ExportMailChimp">
         <methods>
-          <include name="createservices"/>
+          <include name="ConnectMailChimp"/>
           <include name="Login"/>
-          <include name="SettingsTab"/>
         </methods>
-      </class> <!-- SettingsPage.singlesession -->
+      </class> <!-- customerPage.ExportMailChimp -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

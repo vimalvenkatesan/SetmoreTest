@@ -14,6 +14,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
@@ -41,7 +42,7 @@ public class ImportGoogleContacts {
 	    	
 	    	driver.get(Constant.URL);
 	    	driver.findElement(By.id("username")).sendKeys("jacksrone@gmail.com");
-	    	driver.findElement(By.id("password")).sendKeys("setmore");
+	    	driver.findElement(By.id("password")).sendKeys("Setmore");
 	    	driver.findElement(By.xpath("/html/body/form/div/div[2]/div[1]/ul[1]/li[6]/div[3]/input")).click();
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			driver.manage().window().maximize();
@@ -50,7 +51,7 @@ public class ImportGoogleContacts {
 	  @Test(priority=1)
 	    public void one()
 	     {
-		driver.findElement(By.xpath(".//*[@id='headerNav']/ul/li[4]/a")).click();
+		driver.findElement(By.xpath(".//*[@id='side-nav-customers']")).click();
 		Log.info("cusotmer Tab Clicked ");
 	     }
 	    
@@ -63,17 +64,21 @@ public class ImportGoogleContacts {
 		 String handle= driver.getWindowHandle();
 	        System.out.println(handle);
 	        
-		 driver.findElement(By.xpath("//div[@id='sortLabel']")).click();
-		 try {
-			Thread.sleep(3000);
-		} catch (InterruptedException e) {
-			
-			e.printStackTrace();
-		}
+		 driver.findElement(By.xpath(".//*[@id='sortLabel']")).click();
+//		 try {
+			try {
+				Thread.sleep(3000);
+			} catch (InterruptedException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+
 		 
 		 //identify menu option from the resulting menu display and click
-			WebElement menuOption = driver.findElement(By.xpath("/html/body/div[3]/div[2]/div[6]/div/div[1]/div[1]/div[3]/div[2]/ul/li[3]"));
-			menuOption.click();
+//			WebElement menuOption = driver.findElement(By.xpath("/html/body/div[3]/div[2]/div[6]/div/div[1]/div[1]/div[3]/div[2]/ul/li[3]"));
+//			menuOption.click();
+			driver.findElement(By.xpath("/html/body/div[3]/div[2]/div[5]/div[1]/div[1]/div[1]/div[3]/div[2]/ul[1]/li[3]")).click();
+			
 	
 		    WebElement Googleimport = driver.findElement(By.id("importGoogleContacts"));
 		    Googleimport.click();
@@ -137,13 +142,13 @@ public class ImportGoogleContacts {
 				e.printStackTrace();
 			}
 		
-	 }
+	 
 
-		    @AfterTest
-		    public void Logout()
-		    {	
-		    signout.Execute(driver);
-		    Log.info("Logout buddy :) ");
-			}	   
-}	    
+//		    @AfterClass
+//		    public void Logout()
+//		    {	
+//		    signout.Execute(driver);
+//		    Log.info("Logout buddy :) ");
+//			}	   
+}	   } 
 	  

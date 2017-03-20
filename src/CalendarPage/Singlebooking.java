@@ -15,6 +15,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Reporter;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeSuite;
@@ -43,38 +45,44 @@ public class Singlebooking {
 
 	 @Test
 	 public void book() throws InterruptedException 		
-	{	 		 
-		 int positionOfSlots = 52;		 
-//		 driver.findElement(
-//					By.xpath("//*[@id='calendarHolder']/div/div/div/div/div/table/tbody/tr["+positionOfSlots+"]/td/table/tbody/tr/td[1]"))
-//					.click();
+	{	
+		 //Always change this
+		 int positionOfSlots = 64;		 
+
 		     driver.findElement(By.xpath(".//*[@id='calendarHolder']/div/div/div/div/div/table/tbody/tr["+positionOfSlots+"]/td")).click();
 		   
 		 
-				//click service scroll
-			 driver.findElement(By.xpath("/html/body/div[3]/div[2]/div[3]/div[4]/div[3]/ul/li[2]/div[1]/a")).click();
-				 //Select service 
-			 driver.findElement(By.xpath(".//*[@id='service-se2c31440052067209']")).click();
+		//click service scroll
+		//	 driver.findElement(By.xpath("/html/body/div[3]/div[2]/div[3]/div[4]/div[3]/ul/li[2]/div[1]/a")).click();
+			 driver.findElement(By.xpath(".//*[@id='editApptPopup']/div[3]/ul/li[2]/div[1]/a")).click();
+				 //Select service = check the id if broken
+			 driver.findElement(By.xpath(".//*[@id='service-sa0d61450771373756']")).click();
 				Thread.sleep(5000);
 				Log.info("Two");
-				  //click continue
-			 driver.findElement(By.xpath("/html/body/div[3]/div[2]/div[3]/div[4]/div[7]/a[1]")).click();
-				 //Input cusomter name
+				
+	    //click continue
+		//	 driver.findElement(By.xpath("/html/body/div[3]/div[2]/div[3]/div[4]/div[7]/a[1]")).click();
+			 driver.findElement(By.className("appt-save-btn")).click();
+			
+        //Input cusomter name
 			 driver.findElement(By.xpath(".//*[@id='editApptPopup']/div[5]/div/input")).sendKeys("Almighty");
-				 //click New customer
+			 
+		//click New customer
 			 driver.findElement(By.xpath(".//*[@id='editApptPopup']/div[5]/a")).click();
+			 
 			 driver.findElement(By.xpath(".//*[@id='apptCust-LoginId']")).sendKeys("Almighty@g.com");
 			 Thread.sleep(5000);
 			 driver.findElement(By.xpath(".//*[@id='dup-appt-save-btn']")).click();
-		 
+			 Thread.sleep(5000);
 		 
 	 }
-//	 @AfterTest
-//	 public void Logout()
-//	    
-//	    {	
-//	    signout.Execute(driver);
-//		}
+	 
+	 @AfterTest
+	 public void Logout()
+	    
+	    {	
+	    signout.Execute(driver);
+		}
 		
 	
 }

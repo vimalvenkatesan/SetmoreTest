@@ -1,7 +1,7 @@
 <!-- <?xml version="1.0" encoding="UTF-8"?> -->
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<Suite name="suite">
+<suite name="suite">
 	<listeners>
 		<listener class-name="org.uncommons.reportng.HTMLReporter" />
 		<listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
@@ -13,21 +13,14 @@
 	</test>
 	<test name="Facebook">
 		<classes>
-			<class name="logins.Facebook_login.java" />
+			<class name="logins.Facebook_login" />
 		</classes>
 	</test>
-
-	<test name="setmore">
+	
+	<test name="Setmore">
 		<classes>
-			<class name="logins.Setmore_login" />
+			<class name="logins.setmoreLogin" />
 		</classes>
 	</test>
 
-	<!-- <test name="CustomerPage"> <classes> <class name="customerPage.Customer" 
-		/> </classes> </test> -->
-	<test name="Calendar"> <classes> <class name="CalendarPage.Singlebooking" 
-		/> </classes> </test>
-
-	<test name="Bookingpage"> <classes> <class name="bookingPage.Bookaday" 
-		/> </classes> </test> -->
-</Suite> 
+</suite> 

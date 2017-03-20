@@ -6,8 +6,12 @@ import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 import com.sun.mail.handlers.image_jpeg;
 
+import LearningSection.uploadCsv;
+
 import org.testng.annotations.BeforeClass;
-			import java.util.concurrent.TimeUnit;
+
+import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 			import java.util.logging.Logger;
 			import org.openqa.selenium.Alert;
 			import org.openqa.selenium.By;
@@ -18,6 +22,7 @@ import org.testng.annotations.BeforeClass;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestResult;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 			import org.testng.annotations.BeforeClass;
@@ -34,6 +39,8 @@ import Utility.Reporter;
 				 ExtentReports report;
 				 ExtentTest logger1;
 				 WebDriver driver;
+				 String filepath = "/Users/user/Downloads/SampleCSVFile_11kb.csv";
+//				    public static WebDriver driver=new FirefoxDriver();
 			
 			
 			private static Logger Log = Logger.getLogger(CustomerPageFull.class.getName());
@@ -64,7 +71,7 @@ import Utility.Reporter;
 			Log.info("cusotmer Header Clicked ");
 			 }
 			
-			@Test(priority=2)
+			@Test(priority=1)
 			public void CreateCustomer()
 			 { 
 			 Log.info("Create cusotmer");
@@ -489,7 +496,7 @@ import Utility.Reporter;
 			//click service scroll        
 			 driver.findElement(By.xpath("/html/body/div[3]/div[2]/div[6]/div[2]/div[3]/ul/li[2]/div[1]/a")).click();
 			//Select service 
-			 driver.findElement(By.xpath("/html/body/div[3]/div[2]/div[6]/div[2]/div[3]/ul/li[2]/div[1]/ul/li[2]")).click();
+			 driver.findElement(By.xpath("/html/body/div[3]/div[2]/div[6]/div[2]/div[3]/ul/li[2]/div[1]/ul/li[1]")).click();
 			try {
 				Thread.sleep(5000);
 			} catch (InterruptedException e) {
@@ -509,15 +516,92 @@ import Utility.Reporter;
 					e.printStackTrace();
 				}}
 			
-			 @Test(priority=9)
+			@Test(priority=2)
+			
+			    public void Uploadcsvfilecontacts() throws IOException
+			{
+				    
+					 Log.info("Upload CSV file Method runs ");
+					 
+					 String handle= driver.getWindowHandle();
+				        System.out.println(handle);
+				        
+					 driver.findElement(By.xpath("//div[@id='sortLabel']")).click();
+					 try {
+						Thread.sleep(3000);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+			          // until this submenu is found
+
+						//identify menu option from the resulting menu display and click
+						WebElement menuOption = driver.findElement(By.xpath("/html/body/div[3]/div[2]/div[6]/div/div[1]/div[1]/div[3]/div[2]/ul/li[3]"));
+						menuOption.click();
+				
+					    WebElement Csvupload_link = driver.findElement(By.xpath(".//*[@id='importCSVContacts']/div"));
+					    Csvupload_link.click();
+
+				    
+					//	Runtime.getRuntime().exec("osascript"+"//Users/user/Desktop/Applescr.scpt");
+					    
+					Runtime runtime = Runtime.getRuntime();
+					String applescriptCommand = "tell app\"System Events\"\n"+
+				
+							"keystroke\"G\" using {command down, Shift down}\n"+
+							"delay 2\n" +
+							"keystroke\""+filepath+"\"\n" +
+							"delay 1\n" +
+							"keystroke return\n" +
+							"delay 1\n" +
+							"keystroke return\n" +
+							"end tell";
+							
+							String[]args = {"osascript", "-e",applescriptCommand};
+					        Process process =runtime.exec(args);
+					
+						
+					        
+					    System.out.println("First name");
+						  driver.findElement(By.xpath(".//*[@id='import-window']")).click();
+						  driver.findElement(By.xpath(".//*[@id='import-window']/div[2]/ul[1]/li/div[2]/div/a")).click();
+						  driver.findElement(By.xpath(".//*[@id='import-window']/div[2]/ul[1]/li/div[2]/div/ul/li[1]")).click();
+						  driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);	
+//						  driver.findElement(By.xpath(".//*[@id='import-window']/div[2]/ul[1]/li/div[4]/div/a")).click();
+//						  driver.findElement(By.xpath(".//*[@id='import-window']/div[2]/ul[1]/li/div[4]/div/ul/li[3]")).click();
+						  System.out.println("Import contacts");
+						  driver.findElement(By.xpath(".//*[@id='AddCustomerInFile']")).click();
+//						  driver.findElement(By.xpath("")).click();
+						 
+						driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);		 		
+				    	System.out.println("Imported csv contacts successfully");
+
+					    
+					    try {
+							Thread.sleep(1000);
+						} catch (InterruptedException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+					    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+					    driver.findElement(By.id("alertbox")).click();
+					 
+					    driver.findElement(By.id("alertClose")).click();
+					    
+					
+				
+				 }
+				
+			 @AfterTest
 				    public void Logout()
 				    {	
 				    signout.Execute(driver);
 				    Log.info("Logout buddy :) ");
 		    
-			 }   
-				    @AfterTest
-					public void tearDown(ITestResult result)
+			        }   
+			
+			 @AfterMethod
+			 public void tearDown(ITestResult result)
 					
 					{
 						if(result.getStatus()==ITestResult.FAILURE)
@@ -525,13 +609,14 @@ import Utility.Reporter;
 						{
 							String path=CreateScreenshot.snap(driver, result.getName());
 							String image_jpeg= logger1.addScreenCapture(path);
-							logger1.log(LogStatus.PASS,"Final Result", image_jpeg);
+							logger1.log(LogStatus.FAIL,"Final Result", image_jpeg);
 						}
 					
-					report.endTest(logger1);
-					report.flush();
+			report.endTest(logger1);
+			report.flush();
 					
-					driver.get("/Users/user/Downloads/Xslt_reports/customerpage.html");
-					}
-			}
+			driver.get("/Users/user/Downloads/Xslt_reports/customerpage.html");
+			
+					}}
+			
 			

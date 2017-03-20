@@ -37,7 +37,7 @@
 			driver.get(Constant.URL);
 			Log.info("Singin started");
 			driver.findElement(By.id("username")).sendKeys("jacksrone@gmail.com");
-			driver.findElement(By.id("password")).sendKeys("setmore");
+			driver.findElement(By.id("password")).sendKeys("Setmore");
 			driver.findElement(By.xpath("/html/body/form/div/div[2]/div[1]/ul[1]/li[6]/div[3]/input")).click();
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			driver.manage().window().maximize();
@@ -48,7 +48,7 @@
 			public void CustomerTab()
 			 {	
 				
-			driver.findElement(By.xpath(".//*[@id='headerNav']/ul/li[4]/a")).click();
+			driver.findElement(By.xpath(".//*[@id='side-nav-customers']")).click();
 			Log.info("cusotmer Tab Clicked ");
 			 }
 			
@@ -61,7 +61,8 @@
 			 
 			//Delete a customer
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-			driver.findElement(By.xpath("/html/body/div[3]/div[2]/div[6]/div/div[1]/div[1]/div[4]/ul/li[1]/code")).click();		
+
+			///html/body/div[3]/div[2]/div[6]/div/div[1]/div[1]/div[4]/ul/li[1]/code
 			driver.findElement(By.className("delete_btn")).click();
 			driver.findElement(By.xpath(".//*[@id='delete-confirmation-btn']")).click();
 			System.out.println("Customer Deleted Successfully");

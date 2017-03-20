@@ -10,17 +10,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.opera.OperaDriver;
-import org.openqa.selenium.safari.SafariDriver;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Listeners;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
 import Utility.Constant;
 import Utility.Reporter;
 import appModule.signout;
@@ -81,6 +76,16 @@ public class Google_login {
       signout.Execute(driver);
 		
     }
-	
+
+    
+    @AfterMethod
+    public void tearDown(ITestResult result)
+    {
+      if(ITestResult.SUCCESS==result.getStatus())
+	    {
+	     Utility.CreateScreenshot.snap(driver, result.getName());
+        }
+    }
+    
     	}
 	

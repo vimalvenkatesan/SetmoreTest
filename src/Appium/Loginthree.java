@@ -22,7 +22,7 @@ public class Loginthree {
 
 		DesiredCapabilities capabilities = new DesiredCapabilities();
 		capabilities.setCapability("BROWSER_NAME", "Android");
-		capabilities.setCapability("VERSION", "5.1");
+		capabilities.setCapability("VERSION", "6.0.1");
 		capabilities.setCapability("deviceName", "9396aa06");
 		capabilities.setCapability("platformName", "Android");
 

@@ -90,11 +90,11 @@ public class DoubleBookingAppointments {
 		}
 	} 
 
-	 @AfterMethod
-	    public void Logout()
-	    
-	    {	
-	    signout.Execute(driver);
-		}
+//	 @AfterMethod
+//	    public void Logout()
+//	    
+//	    {	
+//	    signout.Execute(driver);
+//		}
 		
 	}

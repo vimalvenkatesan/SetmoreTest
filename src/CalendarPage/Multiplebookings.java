@@ -16,10 +16,16 @@ import appModule.signout;
 import customerPage.Aftersuite;
 
 public class Multiplebookings {
+	
+	
 	WebDriver driver;
-	String calslot = "//*[@id='calendarHolder']/div/div/div/div/div/table/tbody/tr[48]/td/table/tbody/tr/td[4]";
+	//String calslot = "//*[@id='calendarHolder']/div/div/div/div/div/table/tbody/tr[48]/td/table/tbody/tr/td[4]";
 	int apptCount 			= 200;
-	int positionOfSlots 	= 30;
+	int positionOfSlots 	= 65;
+	
+	
+	
+	
 	@BeforeTest
 	public void setUp() {
 		driver = new FirefoxDriver();
@@ -33,7 +39,7 @@ public class Multiplebookings {
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	}
 
-	@Test
+	@Test(priority=2)
 	public void bookLimitedAppts() 
 	{
 		
@@ -42,7 +48,8 @@ public class Multiplebookings {
 			if (i != 4) {
 				try {
 					
-					this.BookingAppts( i , positionOfSlots );positionOfSlots++; 
+					this.BookingAppts( positionOfSlots );
+					positionOfSlots++; 
 					
 				} catch (InterruptedException e) {
 					e.printStackTrace();
@@ -52,26 +59,16 @@ public class Multiplebookings {
 		}
 	}
 
-	@Test
-	public void BookingAppts( int i , int positionOfSlots ) throws InterruptedException {
-
+	@Test(priority=1)
+	public void BookingAppts( int positionOfSlots ) throws InterruptedException {
+		
 		driver.findElement(
-				By.xpath("//*[@id='calendarHolder']/div/div/div/div/div/table/tbody/tr["+positionOfSlots+"]/td"))
+				By.xpath(".//*[@id='startCalendar']"))
 				.click();
-
-		// click service scroll
-	    //driver.findElement(By.xpath("/html/body/div[3]/div[2]/div[3]/div[4]/div[3]/ul/li[2]/div[1]/a")).click();
-		
-//		Select select = new Select(driver.findElement
-//				(By.xpath("/html/body/div[3]/div[2]/div[3]/div[4]/div[3]/ul/li[2]/div[1]/a")));
-//		select.selectByVisibleText("good");
-		
-		
-		Select salesExecutiveDropDown = new Select(driver.findElement(By.id("good")));
-		
-		// Select service
-	    //driver.findElement(By.linkText("Admin Service")).click();
-		
+		driver.findElement(
+				By.xpath("//*[@id='calendarHolder']/div/div/div/div/div/table/tbody/tr["+positionOfSlots+"]/td/div"))
+				.click();
+		driver.findElement(By.xpath(".//*[@id='editApptPopup']/div[3]/ul/li[2]/div[1]/a")).click();
 		driver.findElement(By.xpath(".//*[@id='service-sa0d61450771373756']")).click();
 		Thread.sleep(5000);
 
@@ -93,7 +90,6 @@ public class Multiplebookings {
 		driver.findElement(By.xpath(".//*[@id='apptCust-MobileNo']")).sendKeys("9791171017");
 		
 		Thread.sleep(5000);
-		//driver.findElement(By.xpath(".//*[@id='dup-appt-save-btn']")).click();
 		driver.findElement(By.xpath(".//*[@id='editApptPopup']/div[7]/a[1]")).click();
 		
 		
@@ -104,13 +100,13 @@ public class Multiplebookings {
 			e.printStackTrace();
 			
 		}
+			Thread.sleep(5000);
 	}
-
-	 @AfterTest
-	    public void Logout()
-	    
-	    {	
-	    signout.Execute(driver);
-		}
-		
+	
+//		 @AfterTest
+//		    public void Logout()
+//		    
+//		    {	
+//		    signout.Execute(driver);
+//		    }
 	}

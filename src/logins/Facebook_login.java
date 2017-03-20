@@ -8,6 +8,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Listeners;
@@ -46,8 +48,9 @@ public class Facebook_login {
 		Log.info("Input FaceBook_Login Fields");
 		driver.findElement(By.className("facebook_signin_btn")).click();
 		driver.findElement(By.id("email")).sendKeys("jacksrone@gmail.com");
-		driver.findElement(By.id("pass")).sendKeys("Setmore^9");
+		driver.findElement(By.id("pass")).sendKeys("Setmore");
 		driver.findElement(By.id("loginbutton")).click();
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS); 
 	}
 	
 	
@@ -59,5 +62,13 @@ public class Facebook_login {
 	    signout.Execute(driver);
 	}
 	
+    @AfterMethod
+    public void tearDown(ITestResult result)
+    {
+      if(ITestResult.SUCCESS==result.getStatus())
+	    {
+	     Utility.CreateScreenshot.snap(driver, result.getName());
+        }
+    }
           }
 	

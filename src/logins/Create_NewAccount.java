@@ -9,6 +9,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -35,14 +38,16 @@ public class Create_NewAccount {
     @Test(priority=1)
 	public void createaccount()
 	
-	{
+	{     
+	      
     	Log.info("createaccount");
 		driver.findElement(By.xpath(".//*[@id='login_header']/div/a/span")).click();
 		driver.findElement(By.xpath(".//*[@id='name-signup']")).sendKeys("Create");
-		driver.findElement(By.xpath(".//*[@id='email-signup']")).sendKeys("Create013@setmore.com");
+		driver.findElement(By.xpath(".//*[@id='email-signup']")).sendKeys("Create1s23456789@setmore.com");
 		driver.findElement(By.xpath(".//*[@id='password-signup']")).sendKeys("setmore");
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		driver.findElement(By.xpath(".//*[@id='signup-popup-form']/a")).click();
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	}
     
     @Test(priority=2)
@@ -51,7 +56,10 @@ public class Create_NewAccount {
 	{	
     	Log.info("businessname");
 		driver.findElement(By.xpath(".//*[@id='setup-companyname']")).sendKeys("Business");
-		driver.findElement(By.xpath(".//*[@id='industry-type']")).sendKeys("industry");
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		driver.findElement(By.xpath(".//*[@id='industry-type']")).click();
+		driver.findElement(By.xpath(".//*[@id='industry-types-list']/li[1]")).click();
+		
 		driver.findElement(By.xpath(".//*[@id='setup-phoneNo']")).sendKeys("1234567890");
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		driver.findElement(By.xpath(".//*[@id='setup-welcome-continue']")).click();	
@@ -108,11 +116,11 @@ public class Create_NewAccount {
 	{
     	Log.info("calendarlink");
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);	
-		driver.findElement(By.xpath(".//*[@id='setupContentHolder']/div/div[2]/div[1]")).click();	
+		driver.findElement(By.xpath(".//*[@id='tour-close']/i")).click();	
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	}
-    
-    @AfterTest
+
+    @AfterClass
     public void Logout()
     
     {	
@@ -121,7 +129,14 @@ public class Create_NewAccount {
 
 	}
 	
-    	}
-	
-	
+
+@AfterMethod
+public void tearDown(ITestResult result)
+{
+  if(ITestResult.SUCCESS==result.getStatus())
+    {
+     Utility.CreateScreenshot.snap(driver, result.getName());
+    }
+}
+}
 

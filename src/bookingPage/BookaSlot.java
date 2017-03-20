@@ -5,6 +5,9 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import Appium.Setmore_signin;
 import Utility.Reporter;
+
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeSuite;
@@ -30,10 +33,9 @@ public class BookaSlot {
 	private static Logger Log = Logger.getLogger(Setmore_signin.class.getName());
 	WebDriver driver;
 	String st="No Slots Available";
-//	baseUrl="http://staging.setmore.com/",
 //	css_currentdate="td.datepickerSelected > a > span",
 //	xpath_slots="//div[@class='time_sheet']/ul[@class='morning' or 'afternoon' or 'evening']/li/a",
-//	sr;
+
 	
 
 	 @Test(priority=1)
@@ -46,11 +48,11 @@ public class BookaSlot {
 	}
 
 	 @Test(priority=2)
-  public void booking() {
+     public void booking() {
 	
             System.out.println("starting");
 			// click to choose book services
-//            driver.findElement(By.className(Bookingpage.BookTab)).click();
+            // driver.findElement(By.className(Bookingpage.BookTab)).click();
 			
 			
 		
@@ -129,6 +131,14 @@ public void end(){
 	} catch (InterruptedException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
-	}
+	}}
+	
+  @AfterMethod
+  public void tearDown(ITestResult result)
+  {
+    if(ITestResult.SUCCESS==result.getStatus())
+	    {
+	     Utility.CreateScreenshot.snap(driver, result.getName());
+      }
 			
 }}

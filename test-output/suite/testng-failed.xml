@@ -1,54 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite thread-count="1" guice-stage="DEVELOPMENT" name="Failed suite [Suite]"
-	parallel="tests">
-	<parameter name="browser" value="Safari" />
-	<test name="FirefoxTest">
-		<parameter name="browser" value="firefox" />
-		<classes>
-			<class name="logins.multibrowser" />
-		</classes>
-	</test> <!-- FirefoxTest -->
-	<test name="ChromeTest">
-		<parameter name="browser" value="Chrome" />
-		<classes>
-			<class name="logins.multibrowser" />
-		</classes>
-	</test> <!-- ChromeTest -->
-	<test name="SafariTest">
-		<parameter name="browser" value="Safari" />
-		<classes>
-			<class name="logins.multibrowser" />
-		</classes>
-	</test> <!-- SafariTest -->
-	<test name="ChromeTest(failed)" parallel="tests">
-		<parameter name="browser" value="Chrome" />
-		<classes>
-			<class name="logins.multibrowser">
-				<methods>
-					<include name="login" />
-					<include name="afterTest" />
-					<include name="afterTest" />
-					<include name="beforeTest" />
-					<include name="beforeTest" />
-					<include name="beforeTest" />
-				</methods>
-			</class> <!-- logins.multibrowser -->
-		</classes>
-	</test> <!-- ChromeTest(failed) -->
-	<test name="SafariTest(failed)" parallel="tests">
-		<parameter name="browser" value="Safari" />
-		<classes>
-			<class name="logins.multibrowser">
-				<methods>
-					<include name="login" />
-					<include name="afterTest" />
-					<include name="afterTest" />
-					<include name="beforeTest" />
-					<include name="beforeTest" />
-					<include name="beforeTest" />
-				</methods>
-			</class> <!-- logins.multibrowser -->
-		</classes>
-	</test> <!-- SafariTest(failed) -->
-</suite> <!-- Failed suite [Suite] -->
+<suite guice-stage="DEVELOPMENT" name="Failed suite [suite]">
+  <listeners>
+    <listener class-name="org.uncommons.reportng.HTMLReporter"/>
+    <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
+  </listeners>
+  <test name="Google(failed)">
+    <classes>
+      <class name="logins.setmoreLogin">
+        <methods>
+          <include name="tearDown"/>
+          <include name="Logout"/>
+          <include name="login"/>
+        </methods>
+      </class> <!-- logins.setmoreLogin -->
+      <class name="logins.Facebook_login">
+        <methods>
+          <include name="login"/>
+          <include name="Logout"/>
+        </methods>
+      </class> <!-- logins.Facebook_login -->
+      <class name="logins.Google_login">
+        <methods>
+          <include name="login"/>
+          <include name="GoogleLogin"/>
+          <include name="Logout"/>
+        </methods>
+      </class> <!-- logins.Google_login -->
+    </classes>
+  </test> <!-- Google(failed) -->
+  <test name="Facebook(failed)">
+    <classes>
+      <class name="logins.setmoreLogin">
+        <methods>
+          <include name="tearDown"/>
+          <include name="Logout"/>
+          <include name="login"/>
+        </methods>
+      </class> <!-- logins.setmoreLogin -->
+      <class name="logins.Facebook_login">
+        <methods>
+          <include name="Facebook_Login"/>
+          <include name="login"/>
+          <include name="Logout"/>
+        </methods>
+      </class> <!-- logins.Facebook_login -->
+      <class name="logins.Google_login">
+        <methods>
+          <include name="login"/>
+          <include name="Logout"/>
+        </methods>
+      </class> <!-- logins.Google_login -->
+    </classes>
+  </test> <!-- Facebook(failed) -->
+</suite> <!-- Failed suite [suite] -->

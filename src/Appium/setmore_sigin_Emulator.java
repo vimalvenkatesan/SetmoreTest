@@ -32,9 +32,9 @@ public class setmore_sigin_Emulator {
 		DesiredCapabilities capabilities = new DesiredCapabilities();
 		capabilities.setCapability("BROWSER_NAME", "Android");
 		capabilities.setCapability("VERSION", "5.1");
-		// capabilities.setCapability("deviceName","9396aa06");
+		 capabilities.setCapability("deviceName","9396aa06");
 		capabilities.setCapability("deviceName", "emulator-5554");
-		capabilities.setCapability("platformName", "Android");
+	//	capabilities.setCapability("platformName", "Android");
 		capabilities.setCapability("appPackage", "com.adaptavant.setmore");
 		capabilities.setCapability("appActivity", "com.adaptavant.setmore.ui.StartActivity");
 		driver = new RemoteWebDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);

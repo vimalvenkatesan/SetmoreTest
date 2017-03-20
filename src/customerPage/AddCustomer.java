@@ -39,8 +39,8 @@ import org.testng.annotations.BeforeClass;
 			
 			driver.get(Constant.URL);
 			Log.info("Singin started");
-			driver.findElement(By.id("username")).sendKeys("onida123@setmore.com");
-			driver.findElement(By.id("password")).sendKeys("setmore");
+			driver.findElement(By.id("username")).sendKeys("jacksrone@setmore.com");
+			driver.findElement(By.id("password")).sendKeys("Setmore");
 			driver.findElement(By.xpath("/html/body/form/div/div[2]/div[1]/ul[1]/li[6]/div[3]/input")).click();
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 //			driver.manage().window().maximize();
@@ -51,7 +51,7 @@ import org.testng.annotations.BeforeClass;
 			public void CustomerTab()
 			 {	
 				
-			driver.findElement(By.xpath(".//*[@id='headerNav']/ul/li[4]/a")).click();
+			driver.findElement(By.xpath(".//*[@id='side-nav-customers']")).click();
 			Log.info("cusotmer Tab Clicked ");
 			 }
 			
