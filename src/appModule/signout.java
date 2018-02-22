@@ -17,7 +17,9 @@ public class signout {
 		WebElement ele = driver.findElement(By.xpath("//li[@id='sign_out']/a/div"));
 		Actions Builder = new Actions(driver);
 		Builder.click(ele).perform();
-
+  
+		
+		
 		try {
 			Thread.sleep(2000);
 		} catch (InterruptedException e) {
