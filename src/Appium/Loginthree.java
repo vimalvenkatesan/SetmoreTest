@@ -131,22 +131,22 @@ public class Loginthree {
 			e.printStackTrace();
 		}
 
-		driver.findElement(By
-				.xpath("//android.webkit.WebView[1]/android.view.View[1]/android.view.View[3]/android.widget.EditText[1]"))
+		driver.findElement(By.xpath(
+				"//android.webkit.WebView[1]/android.view.View[1]/android.view.View[3]/android.widget.EditText[1]"))
 				.click();
-		driver.findElement(By
-				.xpath("//android.webkit.WebView[1]/android.view.View[1]/android.view.View[3]/android.widget.EditText[1]"))
+		driver.findElement(By.xpath(
+				"//android.webkit.WebView[1]/android.view.View[1]/android.view.View[3]/android.widget.EditText[1]"))
 				.clear();
-		driver.findElement(By
-				.xpath("//android.webkit.WebView[1]/android.view.View[1]/android.view.View[3]/android.widget.EditText[1]"))
+		driver.findElement(By.xpath(
+				"//android.webkit.WebView[1]/android.view.View[1]/android.view.View[3]/android.widget.EditText[1]"))
 				.sendKeys("jacksrone@gmail.com");
 		driver.navigate().back();
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-		driver.findElement(By
-				.xpath("//android.webkit.WebView[1]/android.view.View[1]/android.view.View[3]/android.widget.EditText[2]"))
+		driver.findElement(By.xpath(
+				"//android.webkit.WebView[1]/android.view.View[1]/android.view.View[3]/android.widget.EditText[2]"))
 				.click();
-		driver.findElement(By
-				.xpath("//android.webkit.WebView[1]/android.view.View[1]/android.view.View[3]/android.widget.EditText[2]"))
+		driver.findElement(By.xpath(
+				"//android.webkit.WebView[1]/android.view.View[1]/android.view.View[3]/android.widget.EditText[2]"))
 				.sendKeys("JohnCena");
 		driver.navigate().back();
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);

@@ -20,6 +20,9 @@ import javax.mail.MessagingException;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
+
+import org.apache.commons.mail.EmailException;
+import org.junit.AfterClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -39,70 +42,75 @@ import org.testng.annotations.Test;
 
 import Utility.Constant;
 import Utility.CreateScreenshot;
+import Utility.EmailReport;
 import appModule.signout;
 import logins.Log4j;
 
-
-public class setmoreLogin {		
-	
+public class TestusingSetmoreLogin {
 
 	ExtentReports report;
 	ExtentTest logger1;
 	WebDriver driver;
-//	private static WebDriver driver;
-	 
+	// private static WebDriver driver;
+
 	private static Logger Log = Logger.getLogger(Log4j.class.getName());
- 
+
 	@BeforeTest
 	public void login()
-	
+
 	{
 		report = new ExtentReports("/Users/user/Downloads/Xslt_reports/Page1.html");
-		logger1 =report.startTest("Report Results");
-		//ExtentReports extent = new ExtentReports("/Users/user/Downloads/extentreports-java-v2.41.1/Reports.json",true);
-		Log.info("Lets Login");
-		driver=new FirefoxDriver();
-		driver.manage().window().maximize();
+		logger1 = report.startTest("Report Results");
+		// ExtentReports extent = new
+		// ExtentReports("/Users/user/Downloads/extentreports-java-v2.41.1/Reports.json",true);
+		Log.info("Web application launched");
+		System.setProperty("webdriver.gecko.driver", "/Users/user/Downloads/Office/EclipseRD/geckodriver");
+		driver = new FirefoxDriver();
 		driver.get(Constant.URL);
+		Log.info("Singin started");
 		Log.info("Implicit wait applied on the driver for 30 seconds");
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS); 
-//		CreateScreenshot.snap(driver, "OpenBrowser");
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		// CreateScreenshot.snap(driver, "OpenBrowser");
 	}
 
-	@Test
+	@Test(priority=1)
 	public void SetmoreLogin()
-	
-	{	
+
+	{
 		Log.info("Input SetMore Login Fields");
 		driver.findElement(By.id("username")).sendKeys("jacksrone@gmail.com");
-		driver.findElement(By.id("password")).sendKeys("Setmore");
-		driver.findElement(By.xpath(".//*[@id='Login_Form_id']/div/div[2]/div[1]/ul[1]/li[6]/div[3]/input")).click();
-//		CreateScreenshot.snap(driver,"loggedina");
+		driver.findElement(By.id("password")).sendKeys("setmore");
+		driver.findElement(By.xpath(".//*[@id=\"Login_Form_id\"]/div/div[2]/div[1]/ul[1]/li[5]/div[3]/input")).click();
+		// CreateScreenshot.snap(driver,"loggedina");
 	}
-	//
 	
-   @AfterTest
-    public void Logout()
-    
-    {	
-    signout.Execute(driver);
-    }
-    
-   @AfterMethod
-	public void tearDown(ITestResult result)
-	
+
+	@Test(priority=2)
+	public void Logout()
+
 	{
-		if(result.getStatus()==ITestResult.FAILURE)
-			
-		{
-			String screenshot=CreateScreenshot.snap(driver, result.getName());
-			String image = logger1.addScreenCapture(screenshot);
-			logger1.log(LogStatus.FAIL,"Result verification",image);
-		}
-	
-	report.endTest(logger1);
-	report.flush();
-	
-	driver.get("/Users/user/Downloads/Xslt_reports/Page1.html");
+		signout.Execute(driver);
 	}
+
+	@AfterMethod
+	public void tearDown(ITestResult result) throws EmailException
+
+	{
+		if (result.getStatus() == ITestResult.FAILURE)
+
+		{
+			String screenshot = CreateScreenshot.snap(driver, result.getName());
+			String image = logger1.addScreenCapture(screenshot);
+			logger1.log(LogStatus.FAIL, "Result verification", image);
+			EmailReport.SendEmail();
+		}
+
+		report.endTest(logger1);
+		report.flush();
+
+		driver.get("/Users/user/Downloads/Xslt_reports/Page1.html");
+	}
+	
+		
+	
 }

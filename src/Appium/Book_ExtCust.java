@@ -69,15 +69,15 @@ public class Book_ExtCust {
 		driver.findElement(By.xpath("//android.widget.GridView[1]/android.widget.LinearLayout[1]")).click();
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		// driver.findElement(By.xpath("//android.widget.ListView[1]/android.widget.FrameLayout[1]")).click();
-		driver.findElement(By
-				.xpath("//android.widget.LinearLayout[1]/android.widget.LinearLayout[2]/android.widget.LinearLayout[3]/android.widget.Button[1]"))
+		driver.findElement(By.xpath(
+				"//android.widget.LinearLayout[1]/android.widget.LinearLayout[2]/android.widget.LinearLayout[3]/android.widget.Button[1]"))
 				.click();
 		// driver.findElement(By.xpath("com.adaptavant.setmore:id/create_appt_search_resource_et")).click();
 		// driver.findElement(By.xpath("com.adaptavant.setmore:id/create_appt_search_resource_et")).sendKeys("Abc");
 		// driver.findElement(By.xpath("com.adaptavant.setmore:id/create_appt_search_resource_et")).sendKeys(Keys.TAB);
 		// android.widget.ListView[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[2]/android.widget.TextView[1]
-		driver.findElement(By
-				.xpath("//android.widget.ListView[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[2]/android.widget.TextView[1]"))
+		driver.findElement(By.xpath(
+				"//android.widget.ListView[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[2]/android.widget.TextView[1]"))
 				.click();
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		driver.findElement(By.id("com.adaptavant.setmore:id/create_appt_save_bt")).click();

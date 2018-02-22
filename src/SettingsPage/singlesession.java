@@ -126,8 +126,8 @@ public class singlesession {
 
 				System.out.println("Click  Daily");
 				/*
-				 * driver.findElement(By.xpath(".//*[@id='repeatType-daily']")).
-				 * click(); driver.findElement(By.xpath(
+				 * driver.findElement(By.xpath(".//*[@id='repeatType-daily']")). click();
+				 * driver.findElement(By.xpath(
 				 * ".//*[@id='editClassApptPopup']/div[2]/ul/li[5]/div[1]/ul/li[3]/div[1]"
 				 * )).click();
 				 */

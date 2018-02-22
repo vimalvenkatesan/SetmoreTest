@@ -15,30 +15,26 @@ import Utility.Reporter;
 
 @Listeners(Reporter.class)
 public class shortendedcode_Login {
-	
-	private static Logger Log = Logger.getLogger(Log4j.class.getName());
-    private static WebDriver driver;
-    
-	@BeforeTest
-	public void login()
-    {	
-     driver=new FirefoxDriver();	     
-    }
-	
-	@Test
-	public void login1()
-	{
-    sigin.Execute(driver,Constant.Username,Constant.Password);
-	}
-	
 
-    @AfterTest
-    public void Logout()
-    
-    {	
-    signout.Execute(driver);
+	private static Logger Log = Logger.getLogger(Log4j.class.getName());
+	private static WebDriver driver;
+
+	@BeforeTest
+	public void login() {
+		System.setProperty("webdriver.gecko.driver", "/Users/user/git/SetmoreTestSep01/ExeFile/geckodriver");
+		driver = new FirefoxDriver();
 	}
-	
-    }
-  
-  
+
+	@Test
+	public void login1() {
+		sigin.Execute(driver, Constant.Username, Constant.Password);
+	}
+
+	@AfterTest
+	public void Logout()
+
+	{
+		signout.Execute(driver);
+	}
+
+}

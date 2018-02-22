@@ -3,12 +3,12 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="customerPage.ExportMailChimp">
+      <class name="LearningSection.ExtentReport">
         <methods>
-          <include name="ConnectMailChimp"/>
-          <include name="Login"/>
+          <include name="tearDown"/>
+          <include name="verifyTitle"/>
         </methods>
-      </class> <!-- customerPage.ExportMailChimp -->
+      </class> <!-- LearningSection.ExtentReport -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

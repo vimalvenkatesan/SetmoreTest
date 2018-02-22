@@ -16,15 +16,11 @@ import appModule.signout;
 import customerPage.Aftersuite;
 
 public class Multiplebookings {
-	
-	
+
 	WebDriver driver;
-	//String calslot = "//*[@id='calendarHolder']/div/div/div/div/div/table/tbody/tr[48]/td/table/tbody/tr/td[4]";
-	
-	
-	
-	
-	
+	// String calslot =
+	// "//*[@id='calendarHolder']/div/div/div/div/div/table/tbody/tr[48]/td/table/tbody/tr/td[4]";
+
 	@BeforeTest
 	public void setUp() {
 		driver = new FirefoxDriver();
@@ -38,21 +34,20 @@ public class Multiplebookings {
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	}
 
-	@Test(priority=1)
-	public void bookLimitedAppts() 
-	{
-		int apptCount 			= 200;
-	    int positionOfSlots 	= 105;
-		
+	@Test(priority = 1)
+	public void bookLimitedAppts() {
+		int apptCount = 200;
+		int positionOfSlots = 105;
+
 		for (int i = 1; i <= apptCount; i++) {
-			
+
 			if (i <= 2) {
 				System.out.println(" Booked No of APPTS  :: " + i);
 				try {
-					
-					this.BookingAppts( positionOfSlots );
-					positionOfSlots++; 
-					
+
+					this.BookingAppts(positionOfSlots);
+					positionOfSlots++;
+
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
@@ -61,12 +56,12 @@ public class Multiplebookings {
 		}
 	}
 
-	@Test(priority=2)
-	public void BookingAppts( int positionOfSlots ) throws InterruptedException {
-		System.out.println("positionOfSlots :: "+positionOfSlots);
+	@Test(priority = 2)
+	public void BookingAppts(int positionOfSlots) throws InterruptedException {
+		System.out.println("positionOfSlots :: " + positionOfSlots);
 
-		driver.findElement(
-				By.xpath("//*[@id='calendarHolder']/div/div/div/div/div/table/tbody/tr["+positionOfSlots+"]/td/div"))
+		driver.findElement(By
+				.xpath("//*[@id='calendarHolder']/div/div/div/div/div/table/tbody/tr[" + positionOfSlots + "]/td/div"))
 				.click();
 		driver.findElement(By.xpath(".//*[@id='editApptPopup']/div[3]/ul/li[2]/div[1]/a")).click();
 		driver.findElement(By.xpath(".//*[@id='service-sa0d61450771373756']")).click();
@@ -78,37 +73,36 @@ public class Multiplebookings {
 		// click continue
 		driver.findElement(By.className("appt-save-btn")).click();
 		// Input cusomter name
-	//	driver.findElement(By.xpath(".//*[@id='editApptPopup']/div[5]/div/input")).sendKeys("Oats"+i);
+		// driver.findElement(By.xpath(".//*[@id='editApptPopup']/div[5]/div/input")).sendKeys("Oats"+i);
 		driver.findElement(By.xpath(".//*[@id='editApptPopup']/div[5]/div/input")).sendKeys("Marksandspencers");
 		// click New customer
 		driver.findElement(By.xpath(".//*[@id='editApptPopup']/div[5]/a")).click();
-		
+
 		driver.findElement(By.xpath(".//*[@id='apptCust-LoginId']")).sendKeys("amyjackson663@gmail.com");
-//		driver.findElement(By.xpath(".//*[@id='apptCust-LoginId']")).sendKeys("jacksrone"+i+"@gmail.com");
-		
+		// driver.findElement(By.xpath(".//*[@id='apptCust-LoginId']")).sendKeys("jacksrone"+i+"@gmail.com");
+
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		driver.findElement(By.xpath(".//*[@id='apptCust-MobileNo']")).sendKeys("9791171017");
-		
+
 		Thread.sleep(5000);
 		driver.findElement(By.xpath(".//*[@id='dup-appt-save-btn']")).click();
-		
-		
+
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		try {
 			Thread.sleep(5000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 			System.out.println(e.getMessage());
-			positionOfSlots++; 
+			positionOfSlots++;
 			bookLimitedAppts();
 		}
-			Thread.sleep(5000);
+		Thread.sleep(5000);
 	}
-	
-//		 @AfterTest
-//		    public void Logout()
-//		    
-//		    {	
-//		    signout.Execute(driver);
-//		    }
-	}
+
+	// @AfterTest
+	// public void Logout()
+	//
+	// {
+	// signout.Execute(driver);
+	// }
+}
